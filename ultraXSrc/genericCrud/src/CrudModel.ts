@@ -1,6 +1,6 @@
-import PowerSQL from "../../modules/powersql/src/powerSql";
-import PowerSQLDefaults from "../../modules/powersql/src/powerSqlDefaults";
-import { PowerSQLTable, PowerSQLTableColumn } from "../../modules/powersql/src/table";
+import PowerSQL from "../../powersql/src/powerSql";
+import PowerSQLDefaults from "../../powersql/src/powerSqlDefaults";
+import { PowerSQLTable, PowerSQLTableColumn } from "../../powersql/src/table";
 import DbInterface from "./dbInterface";
 import Field from "./Field";
 import ObjectData from "./ObjectData";
