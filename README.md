@@ -19,11 +19,13 @@ It does/includes:
 	* For setting up a new CRUD, instantiate the `CrudModel` class.
 	* Tutorial:
 		* First, the model object needs to be created:
-		* `const  userModel = new  ObjectModel([
-	new  Field('id',  'INTEGER', ['PRIMARY KEY']),
-	new  Field('name',  'TEXT', ['NOT NULL']),
-	new  Field('email',  'TEXT'),
-	]);`
+				*     
+			  const userModel = new ObjectModel([
+	              new Field('id', 'INTEGER', ['PRIMARY KEY']),
+	              new Field('name', 'TEXT', ['NOT NULL']),
+		          new Field('email', 'TEXT'),
+              ]);  
+
 		* Secondly, the Crud object needs to be created:
 		* `const userCrud = new CrudModel<User>(database,  userModel,  'userTableName');`
 		* Then, check `GenericCrud` methods.
