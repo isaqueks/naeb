@@ -1,33 +1,21 @@
-import ApiCall from "./apiCall";
+import express = require('express');
 
-class ApiRoute {
+export interface ApiFunction {
+    (req?: express.Request, res?: express.Response, next?: Function): any;
+}
 
-    call: ApiCall;
-    app: any;
+export default interface ApiRoute {
+    apiFn: ApiFunction;
+    route?: string;
+    method?: string;
+}
 
-    constructor(call: ApiCall, app: any) {
-        this.call = call;
-        this.app = app;
-        this.app[this.call.method].bind(app)(this.call.route, this.onRequest.bind(this));
-    }
+export function createRoute(route: string, method: string, apiFn: ApiFunction): ApiRoute {
 
-    private async onRequest(req, res) {
-        try {
-            const resultJson = await this.call.apiFn(req, res);
-            return res.status(200).json({
-                success: true,
-                result: resultJson
-            })
-        }
-        catch (err) {
-            const safeErr = err || { stack: 'Unknown error', message: '' };
-            return res.status(400).json({
-                success: false,
-                error: (`${safeErr.message}\n${safeErr.stack}`)
-            })
-        }
+    return {
+        apiFn: apiFn,
+        route: route,
+        method: method
     }
 
 }
-
-export default ApiRoute;

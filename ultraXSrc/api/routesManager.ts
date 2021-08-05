@@ -1,20 +1,23 @@
-import ApiCall from "./apiCall";
 import ApiRoute from "./apiRoute";
+import ApiRouteExecutor from "./apiRouteExecutor";
 
 import fs = require('fs');
 import path = require('path');
 
-const routes: ApiCall[] = [];
-const workingRoutes: ApiRoute[] = [];
+const routes: ApiRoute[] = [];
+const workingRoutes: ApiRouteExecutor[] = [];
 
 function startRoutes(app) {
     for (let route of routes) {
         console.log(`${route.method.toUpperCase()}\t${route.route}`);
-        workingRoutes.push(new ApiRoute(route, app));
+        workingRoutes.push(new ApiRouteExecutor(route, app));
     }
 }
 
-function manageRoutes(app, dirPath: string, start = true, namesToIgnore = ['tmp']) {
+function manageRoutes(app, dirPath: string, start = true, namesToIgnore = ['tmp'], startDir = '') {
+    if (!startDir) {
+        startDir = dirPath;
+    }
     const files: string[] = fs.readdirSync(dirPath);
 
     for (let file of files) {
@@ -25,11 +28,16 @@ function manageRoutes(app, dirPath: string, start = true, namesToIgnore = ['tmp'
         const abs = path.join(dirPath, file);
 
         if (fs.lstatSync(abs).isDirectory()) {
-            manageRoutes(app, abs, false);
+            manageRoutes(app, abs, false, namesToIgnore, startDir);
         }
         else if (file.endsWith('.ts') || file.endsWith('.js')) {
-            const api: ApiCall = require(abs);
-            if (!api || !(api instanceof ApiCall)) {
+            const api: ApiRoute = require(abs);
+            if (!api.route) {
+                const fileSplitted = file.split('.');
+                fileSplitted.pop();
+                api.route = `/${dirPath.replace(startDir, '').substring(1)}/${fileSplitted.join('.')}`
+            }
+            if (!api) {
                 console.log(`ERR: "${abs}" is not an ApiCall!`);
             }
             else {
