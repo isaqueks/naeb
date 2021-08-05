@@ -3,7 +3,7 @@ import express = require('express');
 
 function fn(req: express.Request, res: express.Response) {
 
-    res.end('Hello World!');
+    return 'It is working (-:'
 
 }
 
