@@ -30,3 +30,10 @@ It does/includes:
 	* By using `manageRoutes(app: Express, routesDir: string)`, ultraX will automatically attach routes inside `routesDir` to `app`.
 	* No need for `res.json(jsonResponse)`. Just by using `return jsonResponse` in route's main function, ultraX will do all the stuff and the response (body) will be like `{ success: true, result: jsonResponse }`.
 	* If an error is thrown, the response will look like `{ success: false, error: '...' }`
+
+## How to setup
+
+1. `cd <projectDir>`
+2. `git clone https://github.com/isaqueks/ultraXFramework.git ./`
+3. `npm install`
+4. Be happy (-:
