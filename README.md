@@ -37,3 +37,20 @@ It does/includes:
 2. `git clone https://github.com/isaqueks/ultraXFramework.git ./`
 3. `npm install`
 4. Be happy (-:
+
+## Example
+
+```
+import UltraX from './ultraXSrc/ultrax';
+import path = require('path');
+
+const PORT = 3000;
+
+const server = new UltraX(PORT, path.join(__dirname, './routes'));
+server
+    .listen(() => console.log(`Server listening at http://localhost:${PORT}`))
+    .bodyParser()
+    .cors()
+    .fileUpload()
+
+```
