@@ -5,6 +5,8 @@ import fileupload = require('express-fileupload');
 import bodyParser = require('body-parser');
 import cors = require('cors');
 
+type ExpressMiddleware = (req: express.Request, res: express.Response, next?) => any;
+
 export default class UltraX {
 
     private expressApp: express.Application;
@@ -32,7 +34,7 @@ export default class UltraX {
         return this;
     }
 
-    public use(...middlewares: Array<(req: express.Request, res: express.Response, next?: any) => any>): UltraX {
+    public use(...middlewares: ExpressMiddleware[]): UltraX {
         middlewares.forEach(middleware => this.expressApp.use(middleware));
         return this;
     }
@@ -50,6 +52,24 @@ export default class UltraX {
 
     public fileUpload(): UltraX {
         this.use(fileupload());
+        return this;
+    }
+
+
+    // Express proxy methods
+
+    public get(route: string, handler: ExpressMiddleware): UltraX {
+        this.expressApp.get(route, handler);
+        return this;
+    }
+
+    public post(route: string, handler: ExpressMiddleware): UltraX {
+        this.expressApp.post(route, handler);
+        return this;
+    }
+
+    public all(route: string, handler: ExpressMiddleware): UltraX {
+        this.expressApp.all(route, handler);
         return this;
     }
 
