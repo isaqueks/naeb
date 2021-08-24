@@ -41,16 +41,16 @@ It does/includes:
 ## Example
 
 ```
-import UltraX from './ultraXSrc/ultrax';
 import path = require('path');
+import UltraX from '.';
 
 const PORT = 3000;
 
 const server = new UltraX(PORT, path.join(__dirname, './routes'));
 server
     .listen(() => console.log(`Server listening at http://localhost:${PORT}`))
-    .bodyParser()
-    .cors()
-    .fileUpload()
+    .useBodyParser()
+    .useCors()
+    .useFileUpload()
 
 ```
