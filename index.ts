@@ -4,7 +4,9 @@ import ApiRouteExecutor from "./ultraXSrc/api/apiRouteExecutor";
 import ApiTemplate from "./ultraXSrc/api/apiTemplate";
 import respondJSON from "./ultraXSrc/api/templates/respondJSON";
 import respondPlain from "./ultraXSrc/api/templates/respondPlain";
+import { database } from "./ultraXSrc/db/database";
 import CrudModel from "./ultraXSrc/genericCrud/src/CrudModel";
+import DbInterface from "./ultraXSrc/genericCrud/src/dbInterface";
 import Field from "./ultraXSrc/genericCrud/src/Field";
 import ObjectData from "./ultraXSrc/genericCrud/src/ObjectData";
 import ObjectModel from "./ultraXSrc/genericCrud/src/ObjectModel";
@@ -29,6 +31,9 @@ export {
     ApiRouteExecutor,
 
     RouteManager,
+
+    DbInterface,
+    database,
 
     CrudModel,
     ObjectModel,
