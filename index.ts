@@ -1,10 +1,10 @@
-import CrudModel from "./build/ultraXSrc/genericCrud/src/CrudModel";
 import { ApiFunctionHandler } from "./ultraXSrc/api/apiFunctionHandler";
 import ApiRoute from "./ultraXSrc/api/apiRoute";
 import ApiRouteExecutor from "./ultraXSrc/api/apiRouteExecutor";
 import ApiTemplate from "./ultraXSrc/api/apiTemplate";
 import respondJSON from "./ultraXSrc/api/templates/respondJSON";
 import respondPlain from "./ultraXSrc/api/templates/respondPlain";
+import CrudModel from "./ultraXSrc/genericCrud/src/CrudModel";
 import Field from "./ultraXSrc/genericCrud/src/Field";
 import ObjectData from "./ultraXSrc/genericCrud/src/ObjectData";
 import ObjectModel from "./ultraXSrc/genericCrud/src/ObjectModel";
