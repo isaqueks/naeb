@@ -1,0 +1,4 @@
+node_modules
+ultraXSrc/db/db.sqlite3
+ultraXSrc/db/sqlite.log
+package-lock.json

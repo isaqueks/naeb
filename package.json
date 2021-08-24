@@ -4,11 +4,11 @@
   "description": "UltraX - Release",
   "main": "index.js",
   "scripts": {
-    "demi": "node demo.js"
+    "demo": "node demo.js"
   },
   "author": "isaqueks",
+  "types": "index.d.ts",
   "license": "MIT",
-
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
