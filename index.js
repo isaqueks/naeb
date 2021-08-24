@@ -3,13 +3,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PowerSQLTableColumn = exports.PowerSQLTable = exports.PowerSQLDefaults = exports.PowerSQL = exports.ValuableField = exports.Field = exports.ObjectData = exports.ObjectModel = exports.CrudModel = exports.RouteManager = exports.ApiRouteExecutor = exports.respondPlain = exports.respondJSON = void 0;
+exports.PowerSQLTableColumn = exports.PowerSQLTable = exports.PowerSQLDefaults = exports.PowerSQL = exports.ValuableField = exports.Field = exports.ObjectData = exports.ObjectModel = exports.CrudModel = exports.database = exports.RouteManager = exports.ApiRouteExecutor = exports.respondPlain = exports.respondJSON = void 0;
 const apiRouteExecutor_1 = __importDefault(require("./ultraXSrc/api/apiRouteExecutor"));
 exports.ApiRouteExecutor = apiRouteExecutor_1.default;
 const respondJSON_1 = __importDefault(require("./ultraXSrc/api/templates/respondJSON"));
 exports.respondJSON = respondJSON_1.default;
 const respondPlain_1 = __importDefault(require("./ultraXSrc/api/templates/respondPlain"));
 exports.respondPlain = respondPlain_1.default;
+const database_1 = require("./ultraXSrc/db/database");
+Object.defineProperty(exports, "database", { enumerable: true, get: function () { return database_1.database; } });
 const CrudModel_1 = __importDefault(require("./ultraXSrc/genericCrud/src/CrudModel"));
 exports.CrudModel = CrudModel_1.default;
 const Field_1 = __importDefault(require("./ultraXSrc/genericCrud/src/Field"));
