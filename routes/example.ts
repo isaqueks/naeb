@@ -1,4 +1,3 @@
-import ApiRoute, { createRoute } from "../ultraXSrc/api/apiRoute";
 import express = require('express');
 
 function fn(req: express.Request, res: express.Response) {
@@ -7,4 +6,8 @@ function fn(req: express.Request, res: express.Response) {
 
 }
 
-module.exports = createRoute('/example', 'get', fn);
+module.exports = {
+    route: '/example',
+    method: 'get',
+    apiFn: fn,
+} 

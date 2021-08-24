@@ -1,21 +1,20 @@
-import express = require('express');
-
-export interface ApiFunction {
-    (req?: express.Request, res?: express.Response, next?: Function): any;
-}
+import { ApiFunctionHandler } from './apiFunctionHandler';
+import ApiTemplate from './apiTemplate';
 
 export default interface ApiRoute {
-    apiFn: ApiFunction;
+    apiFn: ApiFunctionHandler;
     route?: string;
     method?: string;
+    template?: ApiTemplate;
 }
 
-export function createRoute(route: string, method: string, apiFn: ApiFunction): ApiRoute {
+export function createRoute(route: string, method: string, apiFn: ApiFunctionHandler, template?: ApiTemplate): ApiRoute {
 
     return {
         apiFn: apiFn,
         route: route,
-        method: method
+        method: method,
+        template: template
     }
 
 }
