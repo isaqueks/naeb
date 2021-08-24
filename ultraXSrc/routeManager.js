@@ -37,7 +37,7 @@ class RouteManager {
                 if (!api.route) {
                     const fileSplitted = file.split('.');
                     fileSplitted.pop();
-                    api.route = `/${dirPath.replace(startDir, '').substring(1)}/${fileSplitted.join('.')}`
+                    api.route = '/' + `${dirPath.replace(startDir, '').substring(1)}/${fileSplitted.join('.')}`
                         .split('/')
                         .filter(part => part && part.length > 0)
                         .join('/');
