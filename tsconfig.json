@@ -13,5 +13,9 @@
     },
     "exclude": [
         "routes"
+    ],
+    "include":[
+        "*.ts",
+        "*.d.ts"
     ]
 }

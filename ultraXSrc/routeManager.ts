@@ -46,6 +46,9 @@ export default class RouteManager {
                     const fileSplitted = file.split('.');
                     fileSplitted.pop();
                     api.route = `/${dirPath.replace(startDir, '').substring(1)}/${fileSplitted.join('.')}`
+                        .split('/')
+                        .filter(part => part && part.length > 0)
+                        .join('/')
                 }
                 if (!api) {
                     console.log(`ERR: "${abs}" is not an ApiCall!`);
