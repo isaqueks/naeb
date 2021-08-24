@@ -1,7 +1,7 @@
 node_modules
+build
 ultraXSrc/db/db.sqlite3
 ultraXSrc/db/sqlite.log
-server.ts
 tsconfig.json
 package.json
 package-lock.json

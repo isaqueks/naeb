@@ -40,17 +40,17 @@ export default class UltraX {
     }
 
     // Commom used stuff
-    public cors(): UltraX {
+    public useCors(): UltraX {
         this.use(cors());
         return this;
     }
 
-    public bodyParser(): UltraX {
+    public useBodyParser(): UltraX {
         this.use(bodyParser());
         return this;
     }
 
-    public fileUpload(): UltraX {
+    public useFileUpload(): UltraX {
         this.use(fileupload());
         return this;
     }

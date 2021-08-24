@@ -9,6 +9,10 @@
       "strictNullChecks": false,
       "noImplicitAny": false,
       "noImplicitThis": false,
-      "experimentalDecorators": true
-    }
+      "declaration": true,
+    },
+    "exclude": [
+        "routes",
+        "demo.ts"
+    ]
   }

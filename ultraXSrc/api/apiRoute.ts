@@ -7,14 +7,3 @@ export default interface ApiRoute {
     method?: string;
     template?: ApiTemplate;
 }
-
-export function createRoute(route: string, method: string, apiFn: ApiFunctionHandler, template?: ApiTemplate): ApiRoute {
-
-    return {
-        apiFn: apiFn,
-        route: route,
-        method: method,
-        template: template
-    }
-
-}

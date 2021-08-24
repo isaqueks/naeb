@@ -1,11 +1,13 @@
 {
-  "name": "ultraxframework",
+  "name": "ultrax-typescript",
   "version": "1.0.0",
   "description": "",
-  "main": "server.ts",
+  "main": "index.ts",
+  "types": "index.d.ts",
+  "type": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node server.ts"
+    "start": "ts-node demo.ts"
   },
   "author": "",
   "license": "ISC",
