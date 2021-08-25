@@ -1,2 +1,0 @@
-# genericCrud
-TypeScript CRUD Framework

@@ -3,3 +3,4 @@ build
 ultraXSrc/db/db.sqlite3
 ultraXSrc/db/sqlite.log
 .ultraXTest
+typedoc
