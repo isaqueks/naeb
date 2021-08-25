@@ -4,6 +4,8 @@ Simple framework providing all the boilerplate stuff for an express-based server
 
 <hr>
 
+### You can read the [Type documentation](https://isaqueks.github.io/ultraX/)
+
 ## Functionality
 
 ultraX provides a lot of boilerplate stuff that you would write manually if using only express. Also, it comes with [GenericCrud](https://github.com/isaqueks/genericCrud/) and [PowerSQL](https://github.com/isaqueks/powersql) installed.
@@ -76,6 +78,7 @@ It does/includes:
         template: respondPlain
     }
     ```
+    Check: [ApiRoute reference](https://isaqueks.github.io/ultraX/interfaces/ApiRoute.html)
 
 ## How to setup
 
@@ -85,7 +88,7 @@ It does/includes:
 
 ## Example
 
-```
+```ts
 import path = require('path');
 import UltraX from '.';
 
@@ -103,3 +106,4 @@ server
 Like express, you can use middlewares (it contains proxy methods to express app basically):
 
 `server.get(req, res, next)`, `server.post(...)` and `server.use(...)`
+Check [UltraX class](https://isaqueks.github.io/ultraX/classes/default.html)
