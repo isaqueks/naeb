@@ -1,0 +1,269 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>ultrax-dev</title>
+	<meta name="description" content="Documentation for ultrax-dev">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">ultrax-dev</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<h1>ultrax-dev</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#ultraxframework" id="ultraxframework" style="color: inherit; text-decoration: none;">
+					<h1>ultraXFramework</h1>
+				</a>
+				<p>Simple framework providing all the boilerplate stuff for an express-based server</p>
+				<hr>
+				<a href="#functionality" id="functionality" style="color: inherit; text-decoration: none;">
+					<h2>Functionality</h2>
+				</a>
+				<p>ultraX provides a lot of boilerplate stuff that you would write manually if using only express. Also, it comes with <a href="https://github.com/isaqueks/genericCrud/">GenericCrud</a> and <a href="https://github.com/isaqueks/powersql">PowerSQL</a> installed.</p>
+				<p>It does/includes:</p>
+				<ul>
+					<li><p>Express boilerplate interface:</p>
+						<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">PORT</span><span style="color: #000000"> = </span><span style="color: #098658">3000</span><span style="color: #000000">;</span>
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">server</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">UltraX</span><span style="color: #000000">(</span><span style="color: #0070C1">PORT</span><span style="color: #000000">, </span><span style="color: #001080">path</span><span style="color: #000000">.</span><span style="color: #795E26">join</span><span style="color: #000000">(</span><span style="color: #001080">__dirname</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;./routes&#039;</span><span style="color: #000000">));</span>
+<span style="color: #001080">server</span>
+<span style="color: #000000">    .</span><span style="color: #795E26">useBodyParser</span><span style="color: #000000">()</span>
+<span style="color: #000000">    .</span><span style="color: #795E26">useCors</span><span style="color: #000000">()</span>
+<span style="color: #000000">    .</span><span style="color: #795E26">useFileUpload</span><span style="color: #000000">()</span>
+<span style="color: #000000">    .</span><span style="color: #795E26">listen</span><span style="color: #000000">(() </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #A31515">`Server listening at http://localhost:</span><span style="color: #0000FF">${</span><span style="color: #0070C1">PORT</span><span style="color: #0000FF">}</span><span style="color: #A31515">`</span><span style="color: #000000">))</span>
+
+</code></pre>
+					</li>
+					<li><p><a href="https://github.com/isaqueks/powersql">SQL building engine (PowerSQL)</a></p>
+					</li>
+					<li><p>Generic Typed-CRUD System</p>
+						<ul>
+							<li>For setting up a new CRUD, instantiate the <code>SimpleCrud</code> class (or create your own class from <code>Crud</code> base).</li>
+							<li>Tutorial:<ul>
+									<li>First, the model object needs to be defined:</li>
+									<li><pre><code class="language-ts"><span style="color: #000000">    </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">userModel</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">ObjectModel</span><span style="color: #000000">([</span>
+<span style="color: #000000">        </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Field</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;id&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;INTEGER&#039;</span><span style="color: #000000">, [</span><span style="color: #A31515">&#039;PRIMARY KEY&#039;</span><span style="color: #000000">]),</span>
+<span style="color: #000000">        </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Field</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;name&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;TEXT&#039;</span><span style="color: #000000">, [</span><span style="color: #A31515">&#039;NOT NULL&#039;</span><span style="color: #000000">]),</span>
+<span style="color: #000000">        </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Field</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;email&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;TEXT&#039;</span><span style="color: #000000">),</span>
+<span style="color: #000000">    ]);</span>
+</code></pre>
+									</li>
+									<li>Secondly, the Crud object needs to be created:</li>
+									<li><code>const userCrud = new SimpleCrud&lt;User&gt;(database,  userModel,  &#39;userTableName&#39;);</code></li>
+									<li>Then, check <code>SimpleCrud</code> methods.</li>
+									<li>Note: If using JavaScript, create an instance of <code>SimpleCrud</code> without generics <code>&lt;T&gt;</code>, as it is only allowed in TypeScript.</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li><p>Route management:</p>
+						<ul>
+							<li>By specifying the route directory to UltraX constructor, all routes TypeScript files inside the directory will be used as routes.</li>
+							<li>Example route (<code>routes/example.ts</code>):
+								```ts
+							import express = require(&#39;express&#39;);</li>
+						</ul>
+						<p>  function fn(req: express.Request, res: express.Response) {</p>
+						<pre><code><span style="color: #000000">  </span><span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;It is working (-:&#039;</span>
+</code></pre>
+						<p>  }</p>
+						<p>  module.exports = {</p>
+						<pre><code><span style="color: #000000">  method: </span><span style="color: #A31515">&#039;get&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  apiFn: </span><span style="color: #001080">fn</span><span style="color: #000000">,</span>
+</code></pre>
+						<p>  } </p>
+						<pre><code><span style="color: #001080">If</span><span style="color: #000000"> </span><span style="color: #001080">you</span><span style="color: #000000"> </span><span style="color: #001080">make</span><span style="color: #000000"> </span><span style="color: #001080">a</span><span style="color: #000000"> </span><span style="color: #0070C1">GET</span><span style="color: #000000"> </span><span style="color: #001080">request</span><span style="color: #000000"> </span><span style="color: #001080">to</span><span style="color: #000000"> </span><span style="color: #A31515">`&lt;host&gt;/example`</span><span style="color: #000000">, </span><span style="color: #001080">you</span><span style="color: #000000"> </span><span style="color: #001080">should</span><span style="color: #000000"> </span><span style="color: #001080">see</span>
+<span style="color: #A31515">```json</span>
+<span style="color: #A31515">{ </span>
+<span style="color: #A31515">    &quot;success&quot;: true, </span>
+<span style="color: #A31515">    &quot;result&quot;: &quot;It is working (-:&quot; </span>
+<span style="color: #A31515">}</span>
+</code></pre>
+						<p>  If you want to remove the extra data from the response (<code>{ success: ..., result: ... }</code>), simply set <code>template</code> to <code>respondPlain</code> at the route module:</p>
+						<pre><code class="language-js"><span style="color: #267F99">module</span><span style="color: #000000">.</span><span style="color: #267F99">exports</span><span style="color: #000000"> = {</span>
+<span style="color: #000000">    </span><span style="color: #001080">method:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;get&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #001080">apiFn:</span><span style="color: #000000"> </span><span style="color: #001080">fn</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #008000">/* </span>
+<span style="color: #008000">    respondPlain will respond the request with the returned content or error, without any extra processing! </span>
+<span style="color: #008000">    */</span>
+<span style="color: #000000">    </span><span style="color: #001080">template:</span><span style="color: #000000"> </span><span style="color: #001080">respondPlain</span>
+<span style="color: #000000">}</span>
+</code></pre>
+					</li>
+				</ul>
+				<a href="#how-to-setup" id="how-to-setup" style="color: inherit; text-decoration: none;">
+					<h2>How to setup</h2>
+				</a>
+				<ol>
+					<li><code>npm install https://github.com/isaqueks/ultraX.git#release</code></li>
+					<li>Add the <a href="#example">example</a> code to your index file</li>
+					<li>Be happy (-:</li>
+				</ol>
+				<a href="#example" id="example" style="color: inherit; text-decoration: none;">
+					<h2>Example</h2>
+				</a>
+				<pre><code><span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">path</span><span style="color: #000000"> = </span><span style="color: #AF00DB">require</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;path&#039;</span><span style="color: #000000">);</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">UltraX</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;.&#039;</span><span style="color: #000000">;</span>
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">PORT</span><span style="color: #000000"> = </span><span style="color: #098658">3000</span><span style="color: #000000">;</span>
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">server</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">UltraX</span><span style="color: #000000">(</span><span style="color: #0070C1">PORT</span><span style="color: #000000">, </span><span style="color: #001080">path</span><span style="color: #000000">.</span><span style="color: #795E26">join</span><span style="color: #000000">(</span><span style="color: #001080">__dirname</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;./routes&#039;</span><span style="color: #000000">));</span>
+<span style="color: #001080">server</span>
+<span style="color: #000000">    .</span><span style="color: #795E26">useBodyParser</span><span style="color: #000000">()</span>
+<span style="color: #000000">    .</span><span style="color: #795E26">useCors</span><span style="color: #000000">()</span>
+<span style="color: #000000">    .</span><span style="color: #795E26">useFileUpload</span><span style="color: #000000">()</span>
+<span style="color: #000000">    .</span><span style="color: #795E26">listen</span><span style="color: #000000">(() </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #A31515">`Server listening at http://localhost:</span><span style="color: #0000FF">${</span><span style="color: #0070C1">PORT</span><span style="color: #0000FF">}</span><span style="color: #A31515">`</span><span style="color: #000000">))</span>
+
+</code></pre>
+				<p>Like express, you can use middlewares (it contains proxy methods to express app basically):</p>
+				<p><code>server.get(req, res, next)</code>, <code>server.post(...)</code> and <code>server.use(...)</code></p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="classes/ApiRouteExecutor.html" class="tsd-kind-icon">Api<wbr>Route<wbr>Executor</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter tsd-is-external">
+						<a href="classes/Crud.html" class="tsd-kind-icon">Crud</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/Field.html" class="tsd-kind-icon">Field</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/ObjectData.html" class="tsd-kind-icon">Object<wbr>Data</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/ObjectModel.html" class="tsd-kind-icon">Object<wbr>Model</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/PowerSQLTable.html" class="tsd-kind-icon">PowerSQLTable</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/PowerSQLTableColumn.html" class="tsd-kind-icon">PowerSQLTable<wbr>Column</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/RouteManager.html" class="tsd-kind-icon">Route<wbr>Manager</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter tsd-is-external">
+						<a href="classes/SimpleCrud.html" class="tsd-kind-icon">Simple<wbr>Crud</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/ValuableField.html" class="tsd-kind-icon">Valuable<wbr>Field</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/default.html" class="tsd-kind-icon">default</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ApiFunctionHandler.html" class="tsd-kind-icon">Api<wbr>Function<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ApiRoute.html" class="tsd-kind-icon">Api<wbr>Route</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ApiTemplate.html" class="tsd-kind-icon">Api<wbr>Template</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-external">
+						<a href="interfaces/DbInterface.html" class="tsd-kind-icon">Db<wbr>Interface</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-external">
+						<a href="modules.html#PowerSQLDefaults" class="tsd-kind-icon">PowerSQLDefaults</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="modules.html#database" class="tsd-kind-icon">database</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-external">
+						<a href="modules.html#PowerSQL" class="tsd-kind-icon">PowerSQL</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#respondJSON" class="tsd-kind-icon">respondJSON</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#respondPlain" class="tsd-kind-icon">respond<wbr>Plain</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
