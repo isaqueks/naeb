@@ -28,7 +28,7 @@ It does/includes:
 * Generic Typed-CRUD System
 	* For setting up a new CRUD, instantiate the `SimpleCrud` class (or create your own class from `Crud` base).
 	* Tutorial:
-		* First, the model object needs to be created:
+		* First, the model object needs to be defined:
 		*   ```ts 
               const userModel = new ObjectModel([
                   new Field('id', 'INTEGER', ['PRIMARY KEY']),
@@ -39,7 +39,7 @@ It does/includes:
 		* Secondly, the Crud object needs to be created:
 		* `const userCrud = new SimpleCrud<User>(database,  userModel,  'userTableName');`
 		* Then, check `SimpleCrud` methods.
-        * Note: If using JavaScript, create an instance of `SimpleCrud` without generic, as it is only allowed in TypeScript.
+        * Note: If using JavaScript, create an instance of `SimpleCrud` without generics `<T>`, as it is only allowed in TypeScript.
 
 * Route management:
 	* By specifying the route directory to UltraX constructor, all routes TypeScript files inside the directory will be used as routes.
