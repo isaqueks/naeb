@@ -4,6 +4,11 @@ import ApiRouteExecutor from "./api/apiRouteExecutor";
 import fs from 'fs';
 import path from 'path';
 
+/**
+ * The routes manager class. 
+ * Used by default on `UltraX` to scan routes from 
+ * the specified directory
+ */
 export default class RouteManager {
 
     private app: express.Application;
@@ -60,6 +65,9 @@ export default class RouteManager {
         }
     }
 
+    /**
+     * Scans for routes in the specified directory
+     */
     public scanRoutes() {
         if (!this._path) {
             return;
@@ -68,6 +76,9 @@ export default class RouteManager {
         this.scanDir(this._path);
     }
 
+    /**
+     * Starts all the found routes
+     */
     public startRoutes() {
         for (let route of this.routes) {
             console.log(`Starting: ${route.method.toUpperCase()}\t${route.route}`);

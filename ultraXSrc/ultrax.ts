@@ -39,17 +39,29 @@ export default class UltraX {
         return this;
     }
 
-    // Commom used stuff
+
+    /**
+     * Will use the `cors` middleware
+     * @returns The actual `UltraX` instance
+     */
     public useCors(): UltraX {
         this.use(cors());
         return this;
     }
 
+    /**
+     * Will use the `bodyParser` middleware
+     * @returns The actual `UltraX` instance
+     */
     public useBodyParser(): UltraX {
         this.use(bodyParser());
         return this;
     }
 
+    /**
+     * Will use the `fileupload` middleware
+     * @returns The actual `UltraX` instance
+     */
     public useFileUpload(): UltraX {
         this.use(fileupload());
         return this;
@@ -58,16 +70,25 @@ export default class UltraX {
 
     // Express proxy methods
 
+    /**
+     * The same as `express.get`
+     */
     public get(route: string, handler: ExpressMiddleware): UltraX {
         this.expressApp.get(route, handler);
         return this;
     }
 
+     /**
+     * The same as `express.post`
+     */
     public post(route: string, handler: ExpressMiddleware): UltraX {
         this.expressApp.post(route, handler);
         return this;
     }
 
+     /**
+     * The same as `express.all`
+     */
     public all(route: string, handler: ExpressMiddleware): UltraX {
         this.expressApp.all(route, handler);
         return this;
