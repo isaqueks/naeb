@@ -5,7 +5,6 @@ import ApiRouteExecutor from "./ultraXSrc/api/apiRouteExecutor";
 import ApiTemplate from "./ultraXSrc/api/apiTemplate";
 import respondJSON from "./ultraXSrc/api/templates/respondJSON";
 import respondPlain from "./ultraXSrc/api/templates/respondPlain";
-import { database } from "./ultraXSrc/db/database";
 import RouteManager from "./ultraXSrc/routeManager";
 import UltraX from "./ultraXSrc/ultrax";
 import { PowerSQL, PowerSQLDefaults, PowerSQLTable, PowerSQLTableColumn } from "powersql";
@@ -26,7 +25,6 @@ export {
     RouteManager,
 
     DbInterface,
-    database,
 
     Crud,
     SimpleCrud,
