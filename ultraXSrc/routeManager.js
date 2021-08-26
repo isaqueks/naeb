@@ -6,6 +6,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const apiRouteExecutor_1 = __importDefault(require("./api/apiRouteExecutor"));
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
+/**
+ * The routes manager class.
+ * Used by default on `UltraX` to scan routes from
+ * the specified directory
+ */
 class RouteManager {
     constructor(app, path) {
         this.routes = [];
@@ -51,12 +56,18 @@ class RouteManager {
             }
         }
     }
+    /**
+     * Scans for routes in the specified directory
+     */
     scanRoutes() {
         if (!this._path) {
             return;
         }
         this.scanDir(this._path);
     }
+    /**
+     * Starts all the found routes
+     */
     startRoutes() {
         for (let route of this.routes) {
             console.log(`Starting: ${route.method.toUpperCase()}\t${route.route}`);
