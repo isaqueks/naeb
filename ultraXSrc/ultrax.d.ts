@@ -1,9 +1,11 @@
 import express = require('express');
+import RouteManager from './routeManager';
 declare type ExpressMiddleware = (req: express.Request, res: express.Response, next?: any) => any;
 export default class UltraX {
     private expressApp;
     private manager;
     private port;
+    get routes(): RouteManager;
     get express(): express.Application;
     constructor(port: number, routesDir?: string);
     listen(callback?: (data: any) => any): UltraX;

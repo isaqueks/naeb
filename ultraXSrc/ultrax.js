@@ -14,6 +14,9 @@ class UltraX {
         this.expressApp = express();
         this.manager = new routeManager_1.default(this.expressApp, routesDir);
     }
+    get routes() {
+        return this.manager;
+    }
     get express() {
         return this.expressApp;
     }

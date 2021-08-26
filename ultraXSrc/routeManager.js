@@ -24,6 +24,9 @@ class RouteManager {
     get path() {
         return this._path;
     }
+    add(route) {
+        this.routes.push(route);
+    }
     scanDir(dirPath, namesToIgnore = ['tmp'], startDir = '') {
         if (!startDir) {
             startDir = dirPath;
@@ -51,7 +54,7 @@ class RouteManager {
                     console.log(`ERR: "${abs}" is not an ApiCall!`);
                 }
                 else {
-                    this.routes.push(api);
+                    this.add(api);
                 }
             }
         }

@@ -1,4 +1,5 @@
 import express = require('express');
+import ApiRoute from "./api/apiRoute";
 /**
  * The routes manager class.
  * Used by default on `UltraX` to scan routes from
@@ -11,6 +12,7 @@ export default class RouteManager {
     private _path;
     get path(): string;
     constructor(app: express.Application, path?: string);
+    add(route: ApiRoute): void;
     private scanDir;
     /**
      * Scans for routes in the specified directory
