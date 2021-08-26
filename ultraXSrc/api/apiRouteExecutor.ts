@@ -10,7 +10,7 @@ class ApiRouteExecutor {
         this.call = call;
         this.app = app;
 
-        const method = call.method || 'get';
+        const method = call.method;
 
         if (!this.app[method]) {
             throw new Error(`Invalid method "${method}". (Route: ${call.route})`);
