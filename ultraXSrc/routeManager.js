@@ -32,6 +32,9 @@ class RouteManager {
         if (this.workingRoutes.find(arrRoute => arrRoute.call === route)) {
             return;
         }
+        if (!route.method) {
+            route.method = 'get';
+        }
         const executor = new apiRouteExecutor_1.default(route, this.app);
         this.workingRoutes.push(executor);
         console.log(`Starting: ${route.method.toUpperCase()}\t${route.route}`);
