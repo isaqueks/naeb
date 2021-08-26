@@ -34,6 +34,22 @@ export default class UltraX {
         return this;
     }
 
+    /**
+     * 
+     * @param route The middleware scope
+     * @param middleware The middleware itself
+     * @returns The current UltraX instance
+     */
+    public useScoped(route: string, middleware: ExpressMiddleware): UltraX {
+        this.expressApp.use(route, middleware);
+        return this;
+    }
+
+    /**
+     * Uses one or more middleware(s). For scoping, use `useScoped(route: string, middleware)`
+     * @param middlewares The middleware(s) to use
+     * @returns The current UltraX instance
+     */
     public use(...middlewares: ExpressMiddleware[]): UltraX {
         middlewares.forEach(middleware => this.expressApp.use(middleware));
         return this;
