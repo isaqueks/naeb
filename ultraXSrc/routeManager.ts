@@ -29,6 +29,10 @@ export default class RouteManager {
         }
     }
 
+    public add(route: ApiRoute) {
+        this.routes.push(route);
+    }
+
     private scanDir(dirPath: string, namesToIgnore = ['tmp'], startDir = '') {
         if (!startDir) {
             startDir = dirPath;
@@ -59,7 +63,7 @@ export default class RouteManager {
                     console.log(`ERR: "${abs}" is not an ApiCall!`);
                 }
                 else {
-                    this.routes.push(api);
+                    this.add(api);
                 }
             }
         }

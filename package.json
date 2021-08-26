@@ -8,7 +8,7 @@
   "scripts": {
     "build": "tsc",
     "start": "ts-node test.ts",
-    "typedoc": "typedoc index.ts --out typedoc"
+    "typedoc": "typedoc index.ts --out ../ultrax-docs --disableOutputCheck"
   },
   "author": "",
   "license": "ISC",

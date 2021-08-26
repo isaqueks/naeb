@@ -13,6 +13,10 @@ export default class UltraX {
     private manager: RouteManager;
     private port: number;
 
+    public get routes(): RouteManager {
+        return this.manager;
+    }
+
     public get express(): express.Application {
         return this.expressApp;
     }
