@@ -12,7 +12,8 @@ export default class RouteManager {
     private _path;
     get path(): string;
     constructor(app: express.Application, path?: string);
-    add(route: ApiRoute): void;
+    add(route: ApiRoute): ApiRoute;
+    startRoute(route: ApiRoute): void;
     private scanDir;
     /**
      * Scans for routes in the specified directory

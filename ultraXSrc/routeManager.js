@@ -26,6 +26,15 @@ class RouteManager {
     }
     add(route) {
         this.routes.push(route);
+        return route;
+    }
+    startRoute(route) {
+        if (this.workingRoutes.find(arrRoute => arrRoute.call === route)) {
+            return;
+        }
+        const executor = new apiRouteExecutor_1.default(route, this.app);
+        this.workingRoutes.push(executor);
+        console.log(`Starting: ${route.method.toUpperCase()}\t${route.route}`);
     }
     scanDir(dirPath, namesToIgnore = ['tmp'], startDir = '') {
         if (!startDir) {
@@ -73,8 +82,7 @@ class RouteManager {
      */
     startRoutes() {
         for (let route of this.routes) {
-            console.log(`Starting: ${route.method.toUpperCase()}\t${route.route}`);
-            this.workingRoutes.push(new apiRouteExecutor_1.default(route, this.app));
+            this.startRoute(route);
         }
     }
 }
