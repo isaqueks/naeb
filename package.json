@@ -7,7 +7,8 @@
   "type": "commonjs",
   "scripts": {
     "build": "tsc",
-    "start": "ts-node test.ts"
+    "start": "ts-node test.ts",
+    "typedoc": "typedoc index.ts --out typedoc"
   },
   "author": "",
   "license": "ISC",
