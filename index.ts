@@ -7,7 +7,7 @@ import respondJSON from "./ultraXSrc/api/templates/respondJSON";
 import respondPlain from "./ultraXSrc/api/templates/respondPlain";
 import RouteManager from "./ultraXSrc/routeManager";
 import UltraX from "./ultraXSrc/ultrax";
-import { PowerSQL, PowerSQLDefaults, PowerSQLTable, PowerSQLTableColumn } from "powersql";
+import { PowerSQL, PowerSQLDefaults, PowerSQLTable, PowerSQLTableColumn, PowerSQLStatementResult } from "powersql";
 
 export default UltraX;
 
@@ -36,6 +36,7 @@ export {
     PowerSQL,
     PowerSQLDefaults,
     PowerSQLTable,
-    PowerSQLTableColumn
+    PowerSQLTableColumn,
+    PowerSQLStatementResult
     
 }

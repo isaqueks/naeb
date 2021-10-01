@@ -6,12 +6,13 @@ import bodyParser = require('body-parser');
 import cors = require('cors');
 
 type ExpressMiddleware = (req: express.Request, res: express.Response, next?) => any;
+type ListenCallback = (data: any) => any;
 
 export default class UltraX {
 
-    private expressApp: express.Application;
-    private manager: RouteManager;
-    private port: number;
+    protected expressApp: express.Application;
+    protected manager: RouteManager;
+    protected port: number;
 
     public get routes(): RouteManager {
         return this.manager;
@@ -21,20 +22,57 @@ export default class UltraX {
         return this.expressApp;
     }
 
-    constructor(port: number, routesDir?: string) {
+    constructor(port: number, routesDir?: string, expressApp?: express.Application) {
         this.port = port;
-        this.expressApp = express();
+        this.expressApp = expressApp || express();
         this.manager = new RouteManager(this.expressApp, routesDir);
     }
 
-    public listen(callback?: (data: any) => any): UltraX {
-        const result = this.expressApp.listen(this.port, () => {
-            if (this.manager.path) {
-                this.manager.scanRoutes();
-                this.manager.startRoutes();
+    /**
+     * Scan routes in the specified directory and start them.  
+     * Already called in `listen()`
+     */
+    protected scanAndStartRoutes() {
+        if (this.manager.path) {
+            this.manager.scanRoutes();
+            this.manager.startRoutes();
+        }
+    }
+
+
+    public listen(...args: [callback?: ListenCallback] | [hostname: string, callback?: ListenCallback]): UltraX {
+
+
+        let callback = undefined;
+        let host = undefined;
+
+        if (args.length === 1 && typeof args[0] === 'function') {
+            callback = args[0];
+        }
+        else {
+            if (args.length === 1 && typeof args[0] === 'string') {
+                callback = args[0];
             }
+            else if (
+                args.length === 2 && 
+                typeof args[0] === 'string' && 
+                typeof args[1] === 'function') 
+            {
+                host = args[0];
+                callback = args[1];
+            }
+            else {
+                throw new Error(`Unknown arguments! ${args}`);
+            }
+        }
+
+
+        const realCallback = () => {
+            this.scanAndStartRoutes();
             callback && callback(result);
-        });
+        }
+
+        const result = this.expressApp.listen(...[this.port, host, realCallback].filter(arg => arg !== undefined));
         return this;
     }
 
