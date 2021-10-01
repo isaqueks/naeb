@@ -1,14 +1,20 @@
 import express = require('express');
 import RouteManager from './routeManager';
 declare type ExpressMiddleware = (req: express.Request, res: express.Response, next?: any) => any;
+declare type ListenCallback = (data: any) => any;
 export default class UltraX {
-    private expressApp;
-    private manager;
-    private port;
+    protected expressApp: express.Application;
+    protected manager: RouteManager;
+    protected port: number;
     get routes(): RouteManager;
     get express(): express.Application;
-    constructor(port: number, routesDir?: string);
-    listen(callback?: (data: any) => any): UltraX;
+    constructor(port: number, routesDir?: string, expressApp?: express.Application);
+    /**
+     * Scan routes in the specified directory and start them.
+     * Already called in `listen()`
+     */
+    protected scanAndStartRoutes(): void;
+    listen(...args: [callback?: ListenCallback] | [hostname: string, callback?: ListenCallback]): UltraX;
     /**
      *
      * @param route The middleware scope

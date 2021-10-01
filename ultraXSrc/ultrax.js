@@ -9,9 +9,9 @@ const fileupload = require("express-fileupload");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 class UltraX {
-    constructor(port, routesDir) {
+    constructor(port, routesDir, expressApp) {
         this.port = port;
-        this.expressApp = express();
+        this.expressApp = expressApp || express();
         this.manager = new routeManager_1.default(this.expressApp, routesDir);
     }
     get routes() {
@@ -20,14 +20,41 @@ class UltraX {
     get express() {
         return this.expressApp;
     }
-    listen(callback) {
-        const result = this.expressApp.listen(this.port, () => {
-            if (this.manager.path) {
-                this.manager.scanRoutes();
-                this.manager.startRoutes();
+    /**
+     * Scan routes in the specified directory and start them.
+     * Already called in `listen()`
+     */
+    scanAndStartRoutes() {
+        if (this.manager.path) {
+            this.manager.scanRoutes();
+            this.manager.startRoutes();
+        }
+    }
+    listen(...args) {
+        let callback = undefined;
+        let host = undefined;
+        if (args.length === 1 && typeof args[0] === 'function') {
+            callback = args[0];
+        }
+        else {
+            if (args.length === 1 && typeof args[0] === 'string') {
+                callback = args[0];
             }
+            else if (args.length === 2 &&
+                typeof args[0] === 'string' &&
+                typeof args[1] === 'function') {
+                host = args[0];
+                callback = args[1];
+            }
+            else {
+                throw new Error(`Unknown arguments! ${args}`);
+            }
+        }
+        const realCallback = () => {
+            this.scanAndStartRoutes();
             callback && callback(result);
-        });
+        };
+        const result = this.expressApp.listen(...[this.port, host, realCallback].filter(arg => arg !== undefined));
         return this;
     }
     /**
