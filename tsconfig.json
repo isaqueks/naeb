@@ -12,7 +12,8 @@
       "declaration": true,
     },
     "exclude": [
-        "routes"
+        "routes",
+        "cli-resources"
     ],
     "include":[
         "*.ts",

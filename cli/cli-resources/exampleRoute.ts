@@ -2,12 +2,12 @@ import express = require('express');
 
 function fn(req: express.Request, res: express.Response) {
 
-    return 'It is working (-:'
+    return 'Hello World!'
 
 }
 
 module.exports = {
-    route: '/example',
+    route: '/',
     method: 'get',
     apiFn: fn,
 } 

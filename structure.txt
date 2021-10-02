@@ -1,0 +1,6 @@
+/
+    /routes
+    /CRUDs
+    /entities
+    /routeTemplates
+    /src 

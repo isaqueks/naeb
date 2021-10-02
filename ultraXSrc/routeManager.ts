@@ -46,7 +46,18 @@ export default class RouteManager {
         console.log(`Starting: ${route.method.toUpperCase()}\t${route.route}`);
     }
 
-    private scanDir(dirPath: string, namesToIgnore = ['tmp'], startDir = '') {
+    protected resolveRoutePath(dirPath: string, startDir: string, filePath: string): string {
+        const fileSplitted = filePath.split('.');
+        fileSplitted.pop();
+        const route = '/' + `${dirPath.replace(startDir, '').substring(1)}/${fileSplitted.join('.')}`
+            .replace(/\\/, '/')
+            .split('/')
+            .filter(part => part && part.length > 0)
+            .join('/');
+        return route;
+    }
+
+    protected scanDir(dirPath: string, namesToIgnore = ['tmp'], startDir = '') {
         if (!startDir) {
             startDir = dirPath;
         }
@@ -65,12 +76,7 @@ export default class RouteManager {
             else if (file.endsWith('.ts') || file.endsWith('.js')) {
                 const api: ApiRoute = require(abs);
                 if (!api.route) {
-                    const fileSplitted = file.split('.');
-                    fileSplitted.pop();
-                    api.route = '/' + `${dirPath.replace(startDir, '').substring(1)}/${fileSplitted.join('.')}`
-                        .split('/')
-                        .filter(part => part && part.length > 0)
-                        .join('/')
+                    api.route = this.resolveRoutePath(dirPath, startDir, file);
                 }
                 if (!api) {
                     console.log(`ERR: "${abs}" is not an ApiCall!`);
