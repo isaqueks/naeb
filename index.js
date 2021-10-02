@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PowerSQLTableColumn = exports.PowerSQLTable = exports.PowerSQLDefaults = exports.PowerSQL = exports.ValuableField = exports.Field = exports.ObjectData = exports.ObjectModel = exports.SimpleCrud = exports.Crud = exports.RouteManager = exports.ApiRouteExecutor = exports.respondPlain = exports.respondJSON = void 0;
+exports.PowerSQLTableColumn = exports.PowerSQLTable = exports.PowerSQLDefaults = exports.PowerSQL = exports.ValuableField = exports.Field = exports.ObjectData = exports.ObjectModel = exports.SimpleCrud = exports.Crud = exports.SQLiteDatabase = exports.RouteManager = exports.ApiRouteExecutor = exports.respondPlain = exports.respondJSON = void 0;
 const genericcrud_1 = require("genericcrud");
 Object.defineProperty(exports, "Crud", { enumerable: true, get: function () { return genericcrud_1.Crud; } });
 Object.defineProperty(exports, "Field", { enumerable: true, get: function () { return genericcrud_1.Field; } });
@@ -25,4 +25,6 @@ Object.defineProperty(exports, "PowerSQL", { enumerable: true, get: function () 
 Object.defineProperty(exports, "PowerSQLDefaults", { enumerable: true, get: function () { return powersql_1.PowerSQLDefaults; } });
 Object.defineProperty(exports, "PowerSQLTable", { enumerable: true, get: function () { return powersql_1.PowerSQLTable; } });
 Object.defineProperty(exports, "PowerSQLTableColumn", { enumerable: true, get: function () { return powersql_1.PowerSQLTableColumn; } });
+const database_1 = require("./ultraXSrc/db/database");
+Object.defineProperty(exports, "SQLiteDatabase", { enumerable: true, get: function () { return database_1.SQLiteDatabase; } });
 exports.default = ultrax_1.default;

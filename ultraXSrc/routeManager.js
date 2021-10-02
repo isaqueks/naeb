@@ -39,6 +39,16 @@ class RouteManager {
         this.workingRoutes.push(executor);
         console.log(`Starting: ${route.method.toUpperCase()}\t${route.route}`);
     }
+    resolveRoutePath(dirPath, startDir, filePath) {
+        const fileSplitted = filePath.split('.');
+        fileSplitted.pop();
+        const route = '/' + `${dirPath.replace(startDir, '').substring(1)}/${fileSplitted.join('.')}`
+            .replace(/\\/, '/')
+            .split('/')
+            .filter(part => part && part.length > 0)
+            .join('/');
+        return route;
+    }
     scanDir(dirPath, namesToIgnore = ['tmp'], startDir = '') {
         if (!startDir) {
             startDir = dirPath;
@@ -55,12 +65,7 @@ class RouteManager {
             else if (file.endsWith('.ts') || file.endsWith('.js')) {
                 const api = require(abs);
                 if (!api.route) {
-                    const fileSplitted = file.split('.');
-                    fileSplitted.pop();
-                    api.route = '/' + `${dirPath.replace(startDir, '').substring(1)}/${fileSplitted.join('.')}`
-                        .split('/')
-                        .filter(part => part && part.length > 0)
-                        .join('/');
+                    api.route = this.resolveRoutePath(dirPath, startDir, file);
                 }
                 if (!api) {
                     console.log(`ERR: "${abs}" is not an ApiCall!`);

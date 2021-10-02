@@ -1,10 +1,11 @@
 {
   "name": "ultrax",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "description": "UltraX - GitHub: https://github.com/isaqueks/ultraX",
   "main": "index.js",
   "scripts": {
-    "demo": "node demo.js"
+    "demo": "node demo.js",
+    "postinstall": "npm link"
   },
   "author": "isaqueks",
   "types": "index.d.ts",
@@ -17,5 +18,8 @@
     "sqlite3": "^5.0.0",
     "genericcrud": "git+https://github.com/isaqueks/genericCrud.git#release",
     "powersql": "git+https://github.com/isaqueks/powersql.git#release"
+  },
+  "bin": {
+    "ultrax": "./cli.js"
   }
 }
