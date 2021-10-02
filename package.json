@@ -1,6 +1,6 @@
 {
   "name": "ultrax-dev",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "description": "",
   "main": "index.ts",
   "types": "index.d.ts",
@@ -9,7 +9,7 @@
     "build": "tsc",
     "start": "ts-node test.ts",
     "typedoc": "typedoc index.ts --out ../ultrax-docs --disableOutputCheck",
-    "postinstall": "ultrax init"
+    "postinstall": "npm link"
   },
   "author": "",
   "license": "ISC",
