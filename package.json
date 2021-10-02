@@ -4,8 +4,7 @@
   "description": "UltraX - GitHub: https://github.com/isaqueks/ultraX",
   "main": "index.js",
   "scripts": {
-    "demo": "node demo.js",
-    "postinstall": "npm link"
+    "demo": "node demo.js"
   },
   "author": "isaqueks",
   "types": "index.d.ts",
