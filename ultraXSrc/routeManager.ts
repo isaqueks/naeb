@@ -24,7 +24,7 @@ export default class RouteManager {
     constructor(app: express.Application, path?: string) {
         this.app = app;
         this._path = path;
-        if (path && !fs.existsSync(path)) {
+        if (path && (!fs.existsSync(path) || !fs.statSync(path).isDirectory())) {
             throw new Error(`"${path}" is not a valid directory`);
         }
     }
@@ -36,6 +36,7 @@ export default class RouteManager {
 
     public startRoute(route: ApiRoute) {
         if (this.workingRoutes.find(arrRoute => arrRoute.call === route)) {
+            // Route already started
             return;
         }
         if (!route.method) {
@@ -46,15 +47,33 @@ export default class RouteManager {
         console.log(`Starting: ${route.method.toUpperCase()}\t${route.route}`);
     }
 
-    protected resolveRoutePath(dirPath: string, startDir: string, filePath: string): string {
-        const fileSplitted = filePath.split('.');
-        fileSplitted.pop();
-        const route = '/' + `${dirPath.replace(startDir, '').substring(1)}/${fileSplitted.join('.')}`
-            .replace(/\\/, '/')
+    private sanitizePath(filePath: string, startWithSlash: boolean = true): string {
+        let sanitized = filePath
+            .split('\\')
+            .join('/')
             .split('/')
-            .filter(part => part && part.length > 0)
+            .filter(item => item && item.length > 0)
             .join('/');
-        return route;
+        if (sanitized.startsWith('/') && !startWithSlash) {
+            sanitized = sanitized.substring(1);
+        }
+        else if (startWithSlash) {
+            sanitized = '/' + sanitized;
+        }
+        if (path.basename(sanitized).toLowerCase() === 'index') {
+            sanitized = sanitized.substring(0, sanitized.length - 'index'.length);
+        }
+        return sanitized;
+    }
+
+    protected resolveRoutePath(dirPath: string, startDir: string, filePath: string): string {
+        const normalizedRoute = this.sanitizePath('/'+
+            path.join(
+                dirPath.replace(this.sanitizePath(path.normalize(startDir), false), ''),
+                filePath.split('.').slice(0, -1).join('.') // Remove extension
+            )
+        );
+        return normalizedRoute;
     }
 
     protected scanDir(dirPath: string, namesToIgnore = ['tmp'], startDir = '') {
