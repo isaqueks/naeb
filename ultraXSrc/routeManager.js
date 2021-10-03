@@ -17,7 +17,7 @@ class RouteManager {
         this.workingRoutes = [];
         this.app = app;
         this._path = path;
-        if (path && !fs_1.default.existsSync(path)) {
+        if (path && (!fs_1.default.existsSync(path) || !fs_1.default.statSync(path).isDirectory())) {
             throw new Error(`"${path}" is not a valid directory`);
         }
     }
@@ -30,6 +30,7 @@ class RouteManager {
     }
     startRoute(route) {
         if (this.workingRoutes.find(arrRoute => arrRoute.call === route)) {
+            // Route already started
             return;
         }
         if (!route.method) {
@@ -39,15 +40,29 @@ class RouteManager {
         this.workingRoutes.push(executor);
         console.log(`Starting: ${route.method.toUpperCase()}\t${route.route}`);
     }
-    resolveRoutePath(dirPath, startDir, filePath) {
-        const fileSplitted = filePath.split('.');
-        fileSplitted.pop();
-        const route = '/' + `${dirPath.replace(startDir, '').substring(1)}/${fileSplitted.join('.')}`
-            .replace(/\\/, '/')
+    sanitizePath(filePath, startWithSlash = true) {
+        let sanitized = filePath
+            .split('\\')
+            .join('/')
             .split('/')
-            .filter(part => part && part.length > 0)
+            .filter(item => item && item.length > 0)
             .join('/');
-        return route;
+        if (sanitized.startsWith('/') && !startWithSlash) {
+            sanitized = sanitized.substring(1);
+        }
+        else if (startWithSlash) {
+            sanitized = '/' + sanitized;
+        }
+        if (path_1.default.basename(sanitized).toLowerCase() === 'index') {
+            sanitized = sanitized.substring(0, sanitized.length - 'index'.length);
+        }
+        return sanitized;
+    }
+    resolveRoutePath(dirPath, startDir, filePath) {
+        const normalizedRoute = this.sanitizePath('/' +
+            path_1.default.join(dirPath.replace(this.sanitizePath(path_1.default.normalize(startDir), false), ''), filePath.split('.').slice(0, -1).join('.') // Remove extension
+            ));
+        return normalizedRoute;
     }
     scanDir(dirPath, namesToIgnore = ['tmp'], startDir = '') {
         if (!startDir) {

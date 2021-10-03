@@ -14,6 +14,7 @@ export default class RouteManager {
     constructor(app: express.Application, path?: string);
     add(route: ApiRoute): ApiRoute;
     startRoute(route: ApiRoute): void;
+    private sanitizePath;
     protected resolveRoutePath(dirPath: string, startDir: string, filePath: string): string;
     protected scanDir(dirPath: string, namesToIgnore?: string[], startDir?: string): void;
     /**
