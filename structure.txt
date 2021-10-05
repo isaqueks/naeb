@@ -1,6 +1,6 @@
 /
     /routes
-    /CRUDs
-    /entities
-    /routeTemplates
     /src 
+        /CRUDs
+        /entities
+        /routeTemplates

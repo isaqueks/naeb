@@ -2,8 +2,6 @@ import express = require('express');
 import RouteManager from './routeManager';
 
 import fileupload = require('express-fileupload');
-import bodyParser = require('body-parser');
-import cors = require('cors');
 
 type ExpressMiddleware = (req: express.Request, res: express.Response, next?) => any;
 type ListenCallback = (data: any) => any;
@@ -102,8 +100,11 @@ export default class UltraX {
      * Will use the `cors` middleware
      * @returns The actual `UltraX` instance
      */
-    public useCors(): UltraX {
-        this.use(cors());
+    public useCors(origin: string = '*'): UltraX {
+        this.use((req, res, next) => {
+            res.header('Access-Control-Allow-Origin', origin);
+            next && next();
+        });
         return this;
     }
 
@@ -112,7 +113,8 @@ export default class UltraX {
      * @returns The actual `UltraX` instance
      */
     public useBodyParser(): UltraX {
-        this.use(bodyParser());
+        this.use(express.json());
+        this.use(express.urlencoded());
         return this;
     }
 
@@ -125,6 +127,17 @@ export default class UltraX {
         return this;
     }
 
+
+    /**
+     * Shortcut to express.static()
+     * @param scope The scope path
+     * @param staticDir The directory to look for the files
+     * @returns The actual `UltraX` instance
+     */
+    public useStatic(scope: string = '/', staticDir: string): UltraX {
+        this.useScoped(scope, express.static(staticDir));
+        return this;
+    }
 
     // Express proxy methods
 

@@ -8,7 +8,6 @@ import respondPlain from "./ultraXSrc/api/templates/respondPlain";
 import RouteManager from "./ultraXSrc/routeManager";
 import UltraX from "./ultraXSrc/ultrax";
 import { PowerSQL, PowerSQLDefaults, PowerSQLTable, PowerSQLTableColumn, PowerSQLStatementResult } from "powersql";
-import { SQLiteDatabase } from './ultraXSrc/db/database';
 
 export default UltraX;
 
@@ -26,7 +25,6 @@ export {
     RouteManager,
 
     DbInterface,
-    SQLiteDatabase,
 
     Crud,
     SimpleCrud,

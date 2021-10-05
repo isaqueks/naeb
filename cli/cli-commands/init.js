@@ -8,9 +8,9 @@ module.exports = (args) => {
     const dirs = [
         'routes',
         'src',
-        'CRUDs',
-        'routeTemplates',
-        'entities'
+        'src/CRUDs',
+        'src/routeTemplates',
+        'src/entities'
     ];
 
     const files = {
@@ -18,7 +18,8 @@ module.exports = (args) => {
         [path.join(CLI_RESOURCES, 'server.ts')]: 'server.ts',
     }
 
-    dirs.forEach(dir => {
+    dirs.forEach(_dir => {
+        const dir = path.join(process.cwd(), _dir);
         try {
             fs.accessSync(dir);
         }
@@ -33,9 +34,11 @@ module.exports = (args) => {
     });
 
     for (const file in files) {
-        const outPath = files[file];
+        const outPath = path.join(process.cwd(), files[file]);
         try {
-            fs.copyFileSync(file, outPath)
+            if (!fs.existsSync(outPath)) {
+                fs.copyFileSync(file, outPath)
+            }
         }
         catch (err) {
             console.error(`Unable to copy initial file ${file} to ${outPath}!`, err);

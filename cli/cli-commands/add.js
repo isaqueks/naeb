@@ -19,7 +19,7 @@ const createTemplate = (resourceItem, finalpath, templateKeys) => {
             const value = templateKeys[key];
             template = template.split(`__${key}__`).join(value);
         }
-        fs.writeFileSync(finalpath, template);
+        fs.writeFileSync(path.join(process.cwd(), finalpath), template);
     }
     catch (err) {
         console.error(`Unable to create resource from template!`, err);
