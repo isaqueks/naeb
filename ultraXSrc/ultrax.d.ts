@@ -32,7 +32,7 @@ export default class UltraX {
      * Will use the `cors` middleware
      * @returns The actual `UltraX` instance
      */
-    useCors(): UltraX;
+    useCors(origin?: string): UltraX;
     /**
      * Will use the `bodyParser` middleware
      * @returns The actual `UltraX` instance
@@ -43,6 +43,13 @@ export default class UltraX {
      * @returns The actual `UltraX` instance
      */
     useFileUpload(): UltraX;
+    /**
+     * Shortcut to express.static()
+     * @param scope The scope path
+     * @param staticDir The directory to look for the files
+     * @returns The actual `UltraX` instance
+     */
+    useStatic(scope: string, staticDir: string): UltraX;
     /**
      * The same as `express.get`
      */

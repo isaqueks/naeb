@@ -6,8 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
 const routeManager_1 = __importDefault(require("./routeManager"));
 const fileupload = require("express-fileupload");
-const bodyParser = require("body-parser");
-const cors = require("cors");
 class UltraX {
     constructor(port, routesDir, expressApp) {
         this.port = port;
@@ -80,8 +78,11 @@ class UltraX {
      * Will use the `cors` middleware
      * @returns The actual `UltraX` instance
      */
-    useCors() {
-        this.use(cors());
+    useCors(origin = '*') {
+        this.use((req, res, next) => {
+            res.header('Access-Control-Allow-Origin', origin);
+            next && next();
+        });
         return this;
     }
     /**
@@ -89,7 +90,8 @@ class UltraX {
      * @returns The actual `UltraX` instance
      */
     useBodyParser() {
-        this.use(bodyParser());
+        this.use(express.json());
+        this.use(express.urlencoded());
         return this;
     }
     /**
@@ -98,6 +100,16 @@ class UltraX {
      */
     useFileUpload() {
         this.use(fileupload());
+        return this;
+    }
+    /**
+     * Shortcut to express.static()
+     * @param scope The scope path
+     * @param staticDir The directory to look for the files
+     * @returns The actual `UltraX` instance
+     */
+    useStatic(scope = '/', staticDir) {
+        this.useScoped(scope, express.static(staticDir));
         return this;
     }
     // Express proxy methods

@@ -1,6 +1,6 @@
 {
   "name": "ultrax",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "UltraX - GitHub: https://github.com/isaqueks/ultraX",
   "main": "index.js",
   "scripts": {
@@ -10,8 +10,6 @@
   "types": "index.d.ts",
   "license": "MIT",
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-fileupload": "^1.2.1",
     "sqlite3": "^5.0.0",
