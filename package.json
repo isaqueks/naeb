@@ -1,6 +1,6 @@
 {
   "name": "ultrax",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "UltraX - GitHub: https://github.com/isaqueks/ultraX",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,6 @@
   "dependencies": {
     "express": "^4.17.1",
     "express-fileupload": "^1.2.1",
-    "sqlite3": "^5.0.0",
     "genericcrud": "git+https://github.com/isaqueks/genericCrud.git#release",
     "powersql": "git+https://github.com/isaqueks/powersql.git#release"
   },
