@@ -21,7 +21,8 @@ export default async function respondJSX(
     try {
         const jsx = await route(req, res, next);
         const rendered = ReactDOMServer.renderToNodeStream(jsx);
-        res.status(200).type('html').end(rendered);
+        res.status(200).type('html');
+        rendered.pipe(res)
     }
     catch (err) {
         const safeErr = (err || { stack: 'Unknown error', message: '' }) as Error;
