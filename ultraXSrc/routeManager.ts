@@ -17,6 +17,8 @@ export default class RouteManager {
 
     private _path: string;
 
+    public readonly allowedExtensions = ['.ts', '.js', '.jsx', '.tsx'];
+
     public get path(): string {
         return this._path;
     }
@@ -92,7 +94,18 @@ export default class RouteManager {
             if (fs.lstatSync(abs).isDirectory()) {
                 this.scanDir(abs, namesToIgnore, startDir);
             }
-            else if (file.endsWith('.ts') || file.endsWith('.js')) {
+            else {
+                let extensionAllowed = false;
+                for (const ext of this.allowedExtensions) {
+                    if (file.toLowerCase().endsWith(ext)) {
+                        extensionAllowed = true;
+                        break;
+                    }
+                }
+                if (!extensionAllowed) {
+                    return;
+                }
+                
                 const api: ApiRoute = require(abs);
                 if (!api.route) {
                     api.route = this.resolveRoutePath(dirPath, startDir, file);
