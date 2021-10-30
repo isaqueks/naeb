@@ -24,7 +24,7 @@ export default async function respondJSX(
         res.status(200).type('html').end(rendered);
     }
     catch (err) {
-        const safeErr = err || { stack: 'Unknown error', message: '' };
+        const safeErr = (err || { stack: 'Unknown error', message: '' }) as Error;
         res.status(400).json({
             success: false,
             error: (`${safeErr.message}\n${safeErr.stack}`)
