@@ -3,7 +3,6 @@ import express = require('express');
 import path from 'path';
 import fs from 'fs';
 
-
 describe('RouteManager class test', () => {
 
     const app = {

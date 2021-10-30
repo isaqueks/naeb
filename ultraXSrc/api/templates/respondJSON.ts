@@ -31,7 +31,7 @@ export default async function respondJSON(
         });
     }
     catch (err) {
-        const safeErr = err || { stack: 'Unknown error', message: '' };
+        const safeErr = (err || { stack: 'Unknown error', message: '' }) as Error;
         res.status(400).json({
             success: false,
             error: (`${safeErr.message}\n${safeErr.stack}`)
