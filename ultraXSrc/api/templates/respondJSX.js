@@ -29,7 +29,8 @@ function respondJSX(route, req, res, next) {
         try {
             const jsx = yield route(req, res, next);
             const rendered = server_1.default.renderToNodeStream(jsx);
-            res.status(200).type('html').end(rendered);
+            res.status(200).type('html');
+            rendered.pipe(res);
         }
         catch (err) {
             const safeErr = (err || { stack: 'Unknown error', message: '' });
