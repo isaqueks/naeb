@@ -13,7 +13,7 @@ import ReactDOMServer from 'react-dom/server';
  * @param res The express Response
  * @param next The (optional) next
  */
-export default async function respondJSON(
+export default async function respondJSX(
     route: ApiFunctionHandler,
     req: express.Request,
     res: express.Response,
