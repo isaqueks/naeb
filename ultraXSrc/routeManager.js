@@ -15,6 +15,7 @@ class RouteManager {
     constructor(app, path) {
         this.routes = [];
         this.workingRoutes = [];
+        this.allowedExtensions = ['.ts', '.js', '.jsx', '.tsx'];
         this.app = app;
         this._path = path;
         if (path && (!fs_1.default.existsSync(path) || !fs_1.default.statSync(path).isDirectory())) {
@@ -77,7 +78,17 @@ class RouteManager {
             if (fs_1.default.lstatSync(abs).isDirectory()) {
                 this.scanDir(abs, namesToIgnore, startDir);
             }
-            else if (file.endsWith('.ts') || file.endsWith('.js')) {
+            else {
+                let extensionAllowed = false;
+                for (const ext of this.allowedExtensions) {
+                    if (file.toLowerCase().endsWith(ext)) {
+                        extensionAllowed = true;
+                        break;
+                    }
+                }
+                if (!extensionAllowed) {
+                    return;
+                }
                 const api = require(abs);
                 if (!api.route) {
                     api.route = this.resolveRoutePath(dirPath, startDir, file);

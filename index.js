@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PowerSQLTableColumn = exports.PowerSQLTable = exports.PowerSQLDefaults = exports.PowerSQL = exports.ValuableField = exports.Field = exports.ObjectData = exports.ObjectModel = exports.SimpleCrud = exports.Crud = exports.RouteManager = exports.ApiRouteExecutor = exports.respondPlain = exports.respondJSON = void 0;
+exports.PowerSQLTableColumn = exports.PowerSQLTable = exports.PowerSQLDefaults = exports.PowerSQL = exports.ValuableField = exports.Field = exports.ObjectData = exports.ObjectModel = exports.SimpleCrud = exports.Crud = exports.RouteManager = exports.ApiRouteExecutor = exports.respondJSX = exports.respondPlain = exports.respondJSON = void 0;
 const genericcrud_1 = require("genericcrud");
 Object.defineProperty(exports, "Crud", { enumerable: true, get: function () { return genericcrud_1.Crud; } });
 Object.defineProperty(exports, "Field", { enumerable: true, get: function () { return genericcrud_1.Field; } });
@@ -17,6 +17,8 @@ const respondJSON_1 = __importDefault(require("./ultraXSrc/api/templates/respond
 exports.respondJSON = respondJSON_1.default;
 const respondPlain_1 = __importDefault(require("./ultraXSrc/api/templates/respondPlain"));
 exports.respondPlain = respondPlain_1.default;
+const respondJSX_1 = __importDefault(require("./ultraXSrc/api/templates/respondJSX"));
+exports.respondJSX = respondJSX_1.default;
 const routeManager_1 = __importDefault(require("./ultraXSrc/routeManager"));
 exports.RouteManager = routeManager_1.default;
 const ultrax_1 = __importDefault(require("./ultraXSrc/ultrax"));

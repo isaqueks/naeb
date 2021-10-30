@@ -10,6 +10,7 @@ export default class RouteManager {
     private routes;
     private workingRoutes;
     private _path;
+    readonly allowedExtensions: string[];
     get path(): string;
     constructor(app: express.Application, path?: string);
     add(route: ApiRoute): ApiRoute;
