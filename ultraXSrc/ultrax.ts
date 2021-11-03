@@ -1,5 +1,7 @@
 import express = require('express');
 import RouteManager from './routeManager';
+import './extensions/request';
+import asyncJsonBodyParser from './middlewares/asyncJsonBodyParser';
 
 import fileupload = require('express-fileupload');
 
@@ -115,6 +117,16 @@ export default class UltraX {
     public useBodyParser(): UltraX {
         this.use(express.json());
         this.use(express.urlencoded());
+        return this;
+    }
+
+    /**
+     * Add req.body() method to request
+     * @param maxSize The maximum body size. Default is 32kb
+     * @returns The actual `UltraX` instance
+     */
+    public useAsyncJsonBodyParser(maxSize: number = 32 * 1024): UltraX {
+        this.use(asyncJsonBodyParser(maxSize));
         return this;
     }
 
