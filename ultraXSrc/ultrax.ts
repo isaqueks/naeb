@@ -1,6 +1,5 @@
 import express = require('express');
 import RouteManager from './routeManager';
-import './extensions/request';
 import asyncJsonBodyParser from './middlewares/asyncJsonBodyParser';
 
 import fileupload = require('express-fileupload');
