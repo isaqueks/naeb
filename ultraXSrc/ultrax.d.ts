@@ -1,5 +1,6 @@
 import express = require('express');
 import RouteManager from './routeManager';
+import './extensions/request';
 declare type ExpressMiddleware = (req: express.Request, res: express.Response, next?: any) => any;
 declare type ListenCallback = (data: any) => any;
 export default class UltraX {
@@ -38,6 +39,12 @@ export default class UltraX {
      * @returns The actual `UltraX` instance
      */
     useBodyParser(): UltraX;
+    /**
+     * Add req.body() method to request
+     * @param maxSize The maximum body size. Default is 32kb
+     * @returns The actual `UltraX` instance
+     */
+    useAsyncJsonBodyParser(maxSize?: number): UltraX;
     /**
      * Will use the `fileupload` middleware
      * @returns The actual `UltraX` instance

@@ -36,7 +36,7 @@ function respondJSX(route, req, res, next) {
             const safeErr = (err || { stack: 'Unknown error', message: '' });
             res.status(400).json({
                 success: false,
-                error: (`${safeErr.message}\n${safeErr.stack}`)
+                error: (`${String(safeErr.message)}\n${String(safeErr.stack)}`)
             });
         }
     });

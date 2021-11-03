@@ -5,6 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
 const routeManager_1 = __importDefault(require("./routeManager"));
+require("./extensions/request");
+const asyncJsonBodyParser_1 = __importDefault(require("./middlewares/asyncJsonBodyParser"));
 const fileupload = require("express-fileupload");
 class UltraX {
     constructor(port, routesDir, expressApp) {
@@ -92,6 +94,15 @@ class UltraX {
     useBodyParser() {
         this.use(express.json());
         this.use(express.urlencoded());
+        return this;
+    }
+    /**
+     * Add req.body() method to request
+     * @param maxSize The maximum body size. Default is 32kb
+     * @returns The actual `UltraX` instance
+     */
+    useAsyncJsonBodyParser(maxSize = 32 * 1024) {
+        this.use((0, asyncJsonBodyParser_1.default)(maxSize));
         return this;
     }
     /**
