@@ -22,6 +22,6 @@ export default async function respondPlain(
     }
     catch (err) {
         const safeErr = err || { stack: 'Unknown error', message: '' };
-        res.status(400).end(`${safeErr.message}\n${safeErr.stack}`);
+        res.status(400).end(`${String(safeErr.message)}\n${String(safeErr.stack)}`);
     }
 }
