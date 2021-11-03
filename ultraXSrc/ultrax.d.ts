@@ -1,6 +1,5 @@
 import express = require('express');
 import RouteManager from './routeManager';
-import './extensions/request';
 declare type ExpressMiddleware = (req: express.Request, res: express.Response, next?: any) => any;
 declare type ListenCallback = (data: any) => any;
 export default class UltraX {

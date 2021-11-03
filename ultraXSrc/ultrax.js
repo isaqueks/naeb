@@ -5,7 +5,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
 const routeManager_1 = __importDefault(require("./routeManager"));
-require("./extensions/request");
 const asyncJsonBodyParser_1 = __importDefault(require("./middlewares/asyncJsonBodyParser"));
 const fileupload = require("express-fileupload");
 class UltraX {
