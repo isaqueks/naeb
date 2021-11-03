@@ -21,10 +21,17 @@ export default class UltraX {
         return this.expressApp;
     }
 
-    constructor(port: number, routesDir?: string, expressApp?: express.Application) {
+    constructor(port: number, routesDirs?: string | string[], expressApp?: express.Application) {
         this.port = port;
         this.expressApp = expressApp || express();
-        this.manager = new RouteManager(this.expressApp, routesDir);
+        const routes = [];
+        if (routesDirs && Array.isArray(routesDirs)) {
+            routesDirs.forEach(route => routes.push(route));
+        }
+        else if (typeof routesDirs === 'string') {
+            routes.push(routesDirs);
+        }
+        this.manager = new RouteManager(this.expressApp, ...routes);
     }
 
     /**
@@ -32,7 +39,7 @@ export default class UltraX {
      * Already called in `listen()`
      */
     protected scanAndStartRoutes() {
-        if (this.manager.path) {
+        if (this.manager.paths) {
             this.manager.scanRoutes();
             this.manager.startRoutes();
         }

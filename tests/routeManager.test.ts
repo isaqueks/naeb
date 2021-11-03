@@ -30,7 +30,7 @@ describe('RouteManager class test', () => {
         expect(statMock).toHaveBeenCalledWith(routesDir);
         expect(isDirMock).toHaveBeenCalled();
 
-        expect(mgr.path).toEqual(routesDir);
+        expect(mgr.paths).toEqual([routesDir]);
         expect(mgr['app']).toBe(app);
 
 

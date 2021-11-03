@@ -15,19 +15,23 @@ export default class RouteManager {
     private routes: ApiRoute[] = [];
     private workingRoutes: ApiRouteExecutor[] = []; 
 
-    private _path: string;
+    private _paths: string[];
 
     public readonly allowedExtensions = ['.ts', '.js', '.jsx', '.tsx'];
 
-    public get path(): string {
-        return this._path;
+    public get paths(): string[] {
+        return this._paths;
     }
 
-    constructor(app: express.Application, path?: string) {
+    constructor(app: express.Application, ...paths: string[]) {
         this.app = app;
-        this._path = path;
-        if (path && (!fs.existsSync(path) || !fs.statSync(path).isDirectory())) {
-            throw new Error(`"${path}" is not a valid directory`);
+        if (paths) {
+            paths.forEach(path => {
+                if ((!fs.existsSync(path) || !fs.statSync(path).isDirectory())) {
+                    throw new Error(`"${path}" is not a valid directory`);
+                }
+            });
+            this._paths = paths;
         }
     }
 
@@ -124,11 +128,11 @@ export default class RouteManager {
      * Scans for routes in the specified directory
      */
     public scanRoutes() {
-        if (!this._path) {
+        if (!this._paths || this._paths.length === 0) {
             return;
         }
 
-        this.scanDir(this._path);
+        this._paths.forEach(path => this.scanDir(path));
     }
 
     /**
