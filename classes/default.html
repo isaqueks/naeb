@@ -83,12 +83,12 @@
 								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="default.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
+						<section class="tsd-index-section tsd-is-private-protected">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="default.html#expressApp" class="tsd-kind-icon">express<wbr>App</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="default.html#manager" class="tsd-kind-icon">manager</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="default.html#port" class="tsd-kind-icon">port</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="default.html#expressApp" class="tsd-kind-icon">express<wbr>App</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="default.html#manager" class="tsd-kind-icon">manager</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="default.html#port" class="tsd-kind-icon">port</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -105,11 +105,14 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="default.html#get" class="tsd-kind-icon">get</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="default.html#listen" class="tsd-kind-icon">listen</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="default.html#post" class="tsd-kind-icon">post</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="default.html#scanAndStartRoutes" class="tsd-kind-icon">scan<wbr>And<wbr>Start<wbr>Routes</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="default.html#use" class="tsd-kind-icon">use</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="default.html#useAsyncJsonBodyParser" class="tsd-kind-icon">use<wbr>Async<wbr>Json<wbr>Body<wbr>Parser</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="default.html#useBodyParser" class="tsd-kind-icon">use<wbr>Body<wbr>Parser</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="default.html#useCors" class="tsd-kind-icon">use<wbr>Cors</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="default.html#useFileUpload" class="tsd-kind-icon">use<wbr>File<wbr>Upload</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="default.html#useScoped" class="tsd-kind-icon">use<wbr>Scoped</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="default.html#useStatic" class="tsd-kind-icon">use<wbr>Static</a></li>
 							</ul>
 						</section>
 					</div>
@@ -121,13 +124,13 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new default<span class="tsd-signature-symbol">(</span>port<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, routesDir<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="default.html" class="tsd-signature-type" data-tsd-kind="Class">default</a></li>
+						<li class="tsd-signature tsd-kind-icon">new default<span class="tsd-signature-symbol">(</span>port<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, routesDir<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, expressApp<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Application</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="default.html" class="tsd-signature-type" data-tsd-kind="Class">default</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/isaqueks/ultraXFramework/blob/d255f41/ultraXSrc/ultrax.ts#L24">ultraXSrc/ultrax.ts:24</a></li>
+									<li>Defined in <a href="https://github.com/isaqueks/ultraX/blob/61cacfe/ultraXSrc/ultrax.ts#L25">ultraXSrc/ultrax.ts:25</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -138,41 +141,44 @@
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> routesDir: <span class="tsd-signature-type">string</span></h5>
 								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> expressApp: <span class="tsd-signature-type">Application</span></h5>
+								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="default.html" class="tsd-signature-type" data-tsd-kind="Class">default</a></h4>
 						</li>
 					</ul>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
+			<section class="tsd-panel-group tsd-member-group tsd-is-private-protected">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
 					<a name="expressApp" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> express<wbr>App</h3>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> express<wbr>App</h3>
 					<div class="tsd-signature tsd-kind-icon">express<wbr>App<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Application</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/isaqueks/ultraXFramework/blob/d255f41/ultraXSrc/ultrax.ts#L12">ultraXSrc/ultrax.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/isaqueks/ultraX/blob/61cacfe/ultraXSrc/ultrax.ts#L13">ultraXSrc/ultrax.ts:13</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
 					<a name="manager" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> manager</h3>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> manager</h3>
 					<div class="tsd-signature tsd-kind-icon">manager<span class="tsd-signature-symbol">:</span> <a href="RouteManager.html" class="tsd-signature-type" data-tsd-kind="Class">RouteManager</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/isaqueks/ultraXFramework/blob/d255f41/ultraXSrc/ultrax.ts#L13">ultraXSrc/ultrax.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/isaqueks/ultraX/blob/61cacfe/ultraXSrc/ultrax.ts#L14">ultraXSrc/ultrax.ts:14</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
 					<a name="port" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> port</h3>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> port</h3>
 					<div class="tsd-signature tsd-kind-icon">port<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/isaqueks/ultraXFramework/blob/d255f41/ultraXSrc/ultrax.ts#L14">ultraXSrc/ultrax.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/isaqueks/ultraX/blob/61cacfe/ultraXSrc/ultrax.ts#L15">ultraXSrc/ultrax.ts:15</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -189,7 +195,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/isaqueks/ultraXFramework/blob/d255f41/ultraXSrc/ultrax.ts#L20">ultraXSrc/ultrax.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/isaqueks/ultraX/blob/61cacfe/ultraXSrc/ultrax.ts#L21">ultraXSrc/ultrax.ts:21</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Application</span></h4>
@@ -206,7 +212,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/isaqueks/ultraXFramework/blob/d255f41/ultraXSrc/ultrax.ts#L16">ultraXSrc/ultrax.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/isaqueks/ultraX/blob/61cacfe/ultraXSrc/ultrax.ts#L17">ultraXSrc/ultrax.ts:17</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="RouteManager.html" class="tsd-signature-type" data-tsd-kind="Class">RouteManager</a></h4>
@@ -226,7 +232,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/isaqueks/ultraXFramework/blob/d255f41/ultraXSrc/ultrax.ts#L112">ultraXSrc/ultrax.ts:112</a></li>
+									<li>Defined in <a href="https://github.com/isaqueks/ultraX/blob/61cacfe/ultraXSrc/ultrax.ts#L175">ultraXSrc/ultrax.ts:175</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -257,7 +263,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/isaqueks/ultraXFramework/blob/d255f41/ultraXSrc/ultrax.ts#L96">ultraXSrc/ultrax.ts:96</a></li>
+									<li>Defined in <a href="https://github.com/isaqueks/ultraX/blob/61cacfe/ultraXSrc/ultrax.ts#L159">ultraXSrc/ultrax.ts:159</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -282,37 +288,19 @@
 					<a name="listen" class="tsd-anchor"></a>
 					<h3>listen</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">listen<span class="tsd-signature-symbol">(</span>callback<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="default.html" class="tsd-signature-type" data-tsd-kind="Class">default</a></li>
+						<li class="tsd-signature tsd-kind-icon">listen<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span>callback<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">ListenCallback</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">[</span>hostname<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span>callback<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">ListenCallback</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="default.html" class="tsd-signature-type" data-tsd-kind="Class">default</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/isaqueks/ultraXFramework/blob/d255f41/ultraXSrc/ultrax.ts#L30">ultraXSrc/ultrax.ts:30</a></li>
+									<li>Defined in <a href="https://github.com/isaqueks/ultraX/blob/61cacfe/ultraXSrc/ultrax.ts#L43">ultraXSrc/ultrax.ts:43</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">any</span></h5>
-									<ul class="tsd-parameters">
-										<li class="tsd-parameter-signature">
-											<ul class="tsd-signatures tsd-kind-type-literal">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
-											</ul>
-											<ul class="tsd-descriptions">
-												<li class="tsd-description">
-													<h4 class="tsd-parameters-title">Parameters</h4>
-													<ul class="tsd-parameters">
-														<li>
-															<h5>data: <span class="tsd-signature-type">any</span></h5>
-														</li>
-													</ul>
-													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
-												</li>
-											</ul>
-										</li>
-									</ul>
+									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-symbol">[</span>callback<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">ListenCallback</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">[</span>hostname<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span>callback<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">ListenCallback</span><span class="tsd-signature-symbol">]</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="default.html" class="tsd-signature-type" data-tsd-kind="Class">default</a></h4>
@@ -329,7 +317,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/isaqueks/ultraXFramework/blob/d255f41/ultraXSrc/ultrax.ts#L104">ultraXSrc/ultrax.ts:104</a></li>
+									<li>Defined in <a href="https://github.com/isaqueks/ultraX/blob/61cacfe/ultraXSrc/ultrax.ts#L167">ultraXSrc/ultrax.ts:167</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -350,6 +338,29 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<a name="scanAndStartRoutes" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> scan<wbr>And<wbr>Start<wbr>Routes</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">scan<wbr>And<wbr>Start<wbr>Routes<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/isaqueks/ultraX/blob/61cacfe/ultraXSrc/ultrax.ts#L35">ultraXSrc/ultrax.ts:35</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Scan routes in the specified directory and start them.
+									Already called in <code>listen()</code></p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="use" class="tsd-anchor"></a>
 					<h3>use</h3>
@@ -360,7 +371,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/isaqueks/ultraXFramework/blob/d255f41/ultraXSrc/ultrax.ts#L57">ultraXSrc/ultrax.ts:57</a></li>
+									<li>Defined in <a href="https://github.com/isaqueks/ultraX/blob/61cacfe/ultraXSrc/ultrax.ts#L95">ultraXSrc/ultrax.ts:95</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -383,6 +394,38 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="useAsyncJsonBodyParser" class="tsd-anchor"></a>
+					<h3>use<wbr>Async<wbr>Json<wbr>Body<wbr>Parser</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">use<wbr>Async<wbr>Json<wbr>Body<wbr>Parser<span class="tsd-signature-symbol">(</span>maxSize<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="default.html" class="tsd-signature-type" data-tsd-kind="Class">default</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/isaqueks/ultraX/blob/61cacfe/ultraXSrc/ultrax.ts#L128">ultraXSrc/ultrax.ts:128</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Add req.body() method to request</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>maxSize: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The maximum body size. Default is 32kb</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="default.html" class="tsd-signature-type" data-tsd-kind="Class">default</a></h4>
+							<p>The actual <code>UltraX</code> instance</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="useBodyParser" class="tsd-anchor"></a>
 					<h3>use<wbr>Body<wbr>Parser</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -392,7 +435,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/isaqueks/ultraXFramework/blob/d255f41/ultraXSrc/ultrax.ts#L76">ultraXSrc/ultrax.ts:76</a></li>
+									<li>Defined in <a href="https://github.com/isaqueks/ultraX/blob/61cacfe/ultraXSrc/ultrax.ts#L117">ultraXSrc/ultrax.ts:117</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -409,13 +452,13 @@
 					<a name="useCors" class="tsd-anchor"></a>
 					<h3>use<wbr>Cors</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">use<wbr>Cors<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="default.html" class="tsd-signature-type" data-tsd-kind="Class">default</a></li>
+						<li class="tsd-signature tsd-kind-icon">use<wbr>Cors<span class="tsd-signature-symbol">(</span>origin<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="default.html" class="tsd-signature-type" data-tsd-kind="Class">default</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/isaqueks/ultraXFramework/blob/d255f41/ultraXSrc/ultrax.ts#L67">ultraXSrc/ultrax.ts:67</a></li>
+									<li>Defined in <a href="https://github.com/isaqueks/ultraX/blob/61cacfe/ultraXSrc/ultrax.ts#L105">ultraXSrc/ultrax.ts:105</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -423,6 +466,12 @@
 									<p>Will use the <code>cors</code> middleware</p>
 								</div>
 							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>origin: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &#x27;*&#x27;</span></h5>
+								</li>
+							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="default.html" class="tsd-signature-type" data-tsd-kind="Class">default</a></h4>
 							<p>The actual <code>UltraX</code> instance</p>
 						</li>
@@ -438,7 +487,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/isaqueks/ultraXFramework/blob/d255f41/ultraXSrc/ultrax.ts#L85">ultraXSrc/ultrax.ts:85</a></li>
+									<li>Defined in <a href="https://github.com/isaqueks/ultraX/blob/61cacfe/ultraXSrc/ultrax.ts#L137">ultraXSrc/ultrax.ts:137</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -461,7 +510,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/isaqueks/ultraXFramework/blob/d255f41/ultraXSrc/ultrax.ts#L47">ultraXSrc/ultrax.ts:47</a></li>
+									<li>Defined in <a href="https://github.com/isaqueks/ultraX/blob/61cacfe/ultraXSrc/ultrax.ts#L85">ultraXSrc/ultrax.ts:85</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -481,6 +530,44 @@
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="default.html" class="tsd-signature-type" data-tsd-kind="Class">default</a></h4>
 							<p>The current UltraX instance</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="useStatic" class="tsd-anchor"></a>
+					<h3>use<wbr>Static</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">use<wbr>Static<span class="tsd-signature-symbol">(</span>scope<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, staticDir<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="default.html" class="tsd-signature-type" data-tsd-kind="Class">default</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/isaqueks/ultraX/blob/61cacfe/ultraXSrc/ultrax.ts#L149">ultraXSrc/ultrax.ts:149</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Shortcut to express.static()</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>scope: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &#x27;/&#x27;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The scope path</p>
+									</div>
+								</li>
+								<li>
+									<h5>staticDir: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The directory to look for the files</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="default.html" class="tsd-signature-type" data-tsd-kind="Class">default</a></h4>
+							<p>The actual <code>UltraX</code> instance</p>
 						</li>
 					</ul>
 				</section>
@@ -512,6 +599,9 @@
 						<a href="ObjectModel.html" class="tsd-kind-icon">Object<wbr>Model</a>
 					</li>
 					<li class=" tsd-kind-class tsd-is-external">
+						<a href="PowerSQLDefaults.html" class="tsd-kind-icon">PowerSQLDefaults</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
 						<a href="PowerSQLTable.html" class="tsd-kind-icon">PowerSQLTable</a>
 					</li>
 					<li class=" tsd-kind-class tsd-is-external">
@@ -534,13 +624,13 @@
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
 								<a href="default.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
 								<a href="default.html#expressApp" class="tsd-kind-icon">express<wbr>App</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
 								<a href="default.html#manager" class="tsd-kind-icon">manager</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
 								<a href="default.html#port" class="tsd-kind-icon">port</a>
 							</li>
 							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
@@ -561,8 +651,14 @@
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="default.html#post" class="tsd-kind-icon">post</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+								<a href="default.html#scanAndStartRoutes" class="tsd-kind-icon">scan<wbr>And<wbr>Start<wbr>Routes</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="default.html#use" class="tsd-kind-icon">use</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="default.html#useAsyncJsonBodyParser" class="tsd-kind-icon">use<wbr>Async<wbr>Json<wbr>Body<wbr>Parser</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="default.html#useBodyParser" class="tsd-kind-icon">use<wbr>Body<wbr>Parser</a>
@@ -575,6 +671,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="default.html#useScoped" class="tsd-kind-icon">use<wbr>Scoped</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="default.html#useStatic" class="tsd-kind-icon">use<wbr>Static</a>
 							</li>
 						</ul>
 					</li>
@@ -592,17 +691,17 @@
 					<li class=" tsd-kind-interface tsd-is-external">
 						<a href="../interfaces/DbInterface.html" class="tsd-kind-icon">Db<wbr>Interface</a>
 					</li>
-					<li class=" tsd-kind-variable tsd-is-external">
-						<a href="../modules.html#PowerSQLDefaults" class="tsd-kind-icon">PowerSQLDefaults</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../modules.html#database" class="tsd-kind-icon">database</a>
+					<li class=" tsd-kind-type-alias tsd-is-external">
+						<a href="../modules.html#PowerSQLStatementResult" class="tsd-kind-icon">PowerSQLStatement<wbr>Result</a>
 					</li>
 					<li class=" tsd-kind-function tsd-is-external">
 						<a href="../modules.html#PowerSQL" class="tsd-kind-icon">PowerSQL</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="../modules.html#respondJSON" class="tsd-kind-icon">respondJSON</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../modules.html#respondJSX" class="tsd-kind-icon">respondJSX</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="../modules.html#respondPlain" class="tsd-kind-icon">respond<wbr>Plain</a>
@@ -620,6 +719,10 @@
 				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
 				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
