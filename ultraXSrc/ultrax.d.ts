@@ -8,7 +8,7 @@ export default class UltraX {
     protected port: number;
     get routes(): RouteManager;
     get express(): express.Application;
-    constructor(port: number, routesDir?: string, expressApp?: express.Application);
+    constructor(port: number, routesDirs?: string | string[], expressApp?: express.Application);
     /**
      * Scan routes in the specified directory and start them.
      * Already called in `listen()`

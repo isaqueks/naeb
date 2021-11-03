@@ -8,10 +8,17 @@ const routeManager_1 = __importDefault(require("./routeManager"));
 const asyncJsonBodyParser_1 = __importDefault(require("./middlewares/asyncJsonBodyParser"));
 const fileupload = require("express-fileupload");
 class UltraX {
-    constructor(port, routesDir, expressApp) {
+    constructor(port, routesDirs, expressApp) {
         this.port = port;
         this.expressApp = expressApp || express();
-        this.manager = new routeManager_1.default(this.expressApp, routesDir);
+        const routes = [];
+        if (routesDirs && Array.isArray(routesDirs)) {
+            routesDirs.forEach(route => routes.push(route));
+        }
+        else if (typeof routesDirs === 'string') {
+            routes.push(routesDirs);
+        }
+        this.manager = new routeManager_1.default(this.expressApp, ...routes);
     }
     get routes() {
         return this.manager;
@@ -24,7 +31,7 @@ class UltraX {
      * Already called in `listen()`
      */
     scanAndStartRoutes() {
-        if (this.manager.path) {
+        if (this.manager.paths) {
             this.manager.scanRoutes();
             this.manager.startRoutes();
         }

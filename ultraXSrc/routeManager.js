@@ -12,18 +12,22 @@ const path_1 = __importDefault(require("path"));
  * the specified directory
  */
 class RouteManager {
-    constructor(app, path) {
+    constructor(app, ...paths) {
         this.routes = [];
         this.workingRoutes = [];
         this.allowedExtensions = ['.ts', '.js', '.jsx', '.tsx'];
         this.app = app;
-        this._path = path;
-        if (path && (!fs_1.default.existsSync(path) || !fs_1.default.statSync(path).isDirectory())) {
-            throw new Error(`"${path}" is not a valid directory`);
+        if (paths) {
+            paths.forEach(path => {
+                if ((!fs_1.default.existsSync(path) || !fs_1.default.statSync(path).isDirectory())) {
+                    throw new Error(`"${path}" is not a valid directory`);
+                }
+            });
+            this._paths = paths;
         }
     }
-    get path() {
-        return this._path;
+    get paths() {
+        return this._paths;
     }
     add(route) {
         this.routes.push(route);
@@ -106,10 +110,10 @@ class RouteManager {
      * Scans for routes in the specified directory
      */
     scanRoutes() {
-        if (!this._path) {
+        if (!this._paths || this._paths.length === 0) {
             return;
         }
-        this.scanDir(this._path);
+        this._paths.forEach(path => this.scanDir(path));
     }
     /**
      * Starts all the found routes
