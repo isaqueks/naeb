@@ -16,8 +16,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "express-fileupload": "^1.2.1",
-    "genericcrud": "git+https://github.com/isaqueks/genericCrud.git#release",
-    "powersql": "git+https://github.com/isaqueks/powersql.git#release",
+    "genericcrud": "github:isaqueks/liteORM#release",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-jsx": "^1.0.0"
