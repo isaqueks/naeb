@@ -1,6 +1,6 @@
 import express = require('express');
 import RouteManager from './routeManager';
-import asyncJsonBodyParser from './middlewares/asyncJsonBodyParser';
+import asyncBodyParser from './middlewares/asyncBodyParser';
 
 import fileupload = require('express-fileupload');
 
@@ -132,7 +132,7 @@ export default class UltraX {
      * @returns The actual `UltraX` instance
      */
     public useAsyncJsonBodyParser(maxSize: number = 32 * 1024): UltraX {
-        this.use(asyncJsonBodyParser(maxSize));
+        this.use(asyncBodyParser(maxSize));
         return this;
     }
 

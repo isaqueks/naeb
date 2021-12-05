@@ -82,7 +82,7 @@ export default class RouteManager {
         return normalizedRoute;
     }
 
-    protected scanDir(dirPath: string, namesToIgnore = ['tmp'], startDir = '') {
+    protected async scanDir(dirPath: string, namesToIgnore = ['tmp'], startDir = '') {
         if (!startDir) {
             startDir = dirPath;
         }
@@ -110,7 +110,7 @@ export default class RouteManager {
                     return;
                 }
                 
-                const api: ApiRoute = require(abs);
+                const api: ApiRoute = await import(abs);
                 if (!api.route) {
                     api.route = this.resolveRoutePath(dirPath, startDir, file);
                 }
@@ -127,12 +127,12 @@ export default class RouteManager {
     /**
      * Scans for routes in the specified directory
      */
-    public scanRoutes() {
+    public async scanRoutes() {
         if (!this._paths || this._paths.length === 0) {
             return;
         }
 
-        this._paths.forEach(path => this.scanDir(path));
+        await Promise.all(this._paths.map(path => this.scanDir(path)));
     }
 
     /**
