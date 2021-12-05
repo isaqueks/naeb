@@ -7,7 +7,7 @@ import fileupload = require('express-fileupload');
 type ExpressMiddleware = (req: express.Request, res: express.Response, next?) => any;
 type ListenCallback = (data: any) => any;
 
-export default class UltraX {
+export default class NAEBServer {
 
     protected expressApp: express.Application;
     protected manager: RouteManager;
@@ -46,7 +46,7 @@ export default class UltraX {
     }
 
 
-    public listen(...args: [callback?: ListenCallback] | [hostname: string, callback?: ListenCallback]): UltraX {
+    public listen(...args: [callback?: ListenCallback] | [hostname: string, callback?: ListenCallback]): NAEBServer {
 
 
         let callback = undefined;
@@ -86,9 +86,9 @@ export default class UltraX {
      * 
      * @param route The middleware scope
      * @param middleware The middleware itself
-     * @returns The current UltraX instance
+     * @returns The current NAEBServer instance
      */
-    public useScoped(route: string, middleware: ExpressMiddleware): UltraX {
+    public useScoped(route: string, middleware: ExpressMiddleware): NAEBServer {
         this.expressApp.use(route, middleware);
         return this;
     }
@@ -96,9 +96,9 @@ export default class UltraX {
     /**
      * Uses one or more middleware(s). For scoping, use `useScoped(route: string, middleware)`
      * @param middlewares The middleware(s) to use
-     * @returns The current UltraX instance
+     * @returns The current NAEBServer instance
      */
-    public use(...middlewares: ExpressMiddleware[]): UltraX {
+    public use(...middlewares: ExpressMiddleware[]): NAEBServer {
         middlewares.forEach(middleware => this.expressApp.use(middleware));
         return this;
     }
@@ -106,9 +106,9 @@ export default class UltraX {
 
     /**
      * Will use the `cors` middleware
-     * @returns The actual `UltraX` instance
+     * @returns The actual `NAEBServer` instance
      */
-    public useCors(origin: string = '*'): UltraX {
+    public useCors(origin: string = '*'): NAEBServer {
         this.use((req, res, next) => {
             res.header('Access-Control-Allow-Origin', origin);
             next && next();
@@ -118,9 +118,9 @@ export default class UltraX {
 
     /**
      * Will use the `bodyParser` middleware
-     * @returns The actual `UltraX` instance
+     * @returns The actual `NAEBServer` instance
      */
-    public useBodyParser(): UltraX {
+    public useBodyParser(): NAEBServer {
         this.use(express.json());
         this.use(express.urlencoded());
         return this;
@@ -129,18 +129,18 @@ export default class UltraX {
     /**
      * Add req.body() method to request
      * @param maxSize The maximum body size. Default is 32kb
-     * @returns The actual `UltraX` instance
+     * @returns The actual `NAEBServer` instance
      */
-    public useAsyncJsonBodyParser(maxSize: number = 32 * 1024): UltraX {
+    public useAsyncJsonBodyParser(maxSize: number = 32 * 1024): NAEBServer {
         this.use(asyncBodyParser(maxSize));
         return this;
     }
 
     /**
      * Will use the `fileupload` middleware
-     * @returns The actual `UltraX` instance
+     * @returns The actual `NAEBServer` instance
      */
-    public useFileUpload(): UltraX {
+    public useFileUpload(): NAEBServer {
         this.use(fileupload());
         return this;
     }
@@ -150,9 +150,9 @@ export default class UltraX {
      * Shortcut to express.static()
      * @param scope The scope path
      * @param staticDir The directory to look for the files
-     * @returns The actual `UltraX` instance
+     * @returns The actual `NAEBServer` instance
      */
-    public useStatic(scope: string = '/', staticDir: string): UltraX {
+    public useStatic(scope: string = '/', staticDir: string): NAEBServer {
         this.useScoped(scope, express.static(staticDir));
         return this;
     }
@@ -162,7 +162,7 @@ export default class UltraX {
     /**
      * The same as `express.get`
      */
-    public get(route: string, handler: ExpressMiddleware): UltraX {
+    public get(route: string, handler: ExpressMiddleware): NAEBServer {
         this.expressApp.get(route, handler);
         return this;
     }
@@ -170,7 +170,7 @@ export default class UltraX {
      /**
      * The same as `express.post`
      */
-    public post(route: string, handler: ExpressMiddleware): UltraX {
+    public post(route: string, handler: ExpressMiddleware): NAEBServer {
         this.expressApp.post(route, handler);
         return this;
     }
@@ -178,7 +178,7 @@ export default class UltraX {
      /**
      * The same as `express.all`
      */
-    public all(route: string, handler: ExpressMiddleware): UltraX {
+    public all(route: string, handler: ExpressMiddleware): NAEBServer {
         this.expressApp.all(route, handler);
         return this;
     }

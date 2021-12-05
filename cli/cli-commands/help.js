@@ -3,20 +3,20 @@ module.exports = (args) => {
 
     console.log(
 `
-Usage: ultrax --command
+Usage: naeb --command
 
 Commands:
     add <type> <name>
     Creates a new item of type <type>.
-    Example: ultrax add route myRoute
+    Example: naeb add route myRoute
 
     init
-    Initializes the UltraX project.
-    Example: ultrax init
+    Initializes the NAEB project.
+    Example: naeb init
 
     help
     Displays help
-    Example: ultrax help
+    Example: naeb help
 
 `.trim());
 

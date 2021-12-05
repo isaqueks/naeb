@@ -6,7 +6,7 @@ import path from 'path';
 
 /**
  * The routes manager class. 
- * Used by default on `UltraX` to scan routes from 
+ * Used by default on `NAEBServer` to scan routes from 
  * the specified directory
  */
 export default class RouteManager {

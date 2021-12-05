@@ -1,11 +1,11 @@
 import express = require('express');
-import { ApiFunctionHandler } from 'ultrax';
+import { HTTPFunctionHandler } from 'naeb';
 
 export default async function __NAME__(
-    route: ApiFunctionHandler,
+    route: HTTPFunctionHandler,
     req: express.Request,
     res: express.Response,
-    next?: ApiFunctionHandler) {
+    next?: HTTPFunctionHandler) {
     try {
         const result = await route(req, res, next);
     }

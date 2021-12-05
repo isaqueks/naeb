@@ -1,14 +1,16 @@
-#  ultraXFramework
+#  NAEB
 
-Simple framework providing all the boilerplate stuff for an express-based server
+*NodeJS and Express Boilerplate*
+
+Simple framework providing the boilerplate stuff for an express-based server
 
 <hr>
 
-### You can read the [Type documentation](https://isaqueks.github.io/ultraX/)
+### You can read the [Type documentation](https://isaqueks.github.io/NAEB/)
 
 ## Functionality
 
-ultraX provides a lot of boilerplate stuff that you would write manually if using only express. Also, it comes with [GenericCrud](https://github.com/isaqueks/genericCrud/) and [PowerSQL](https://github.com/isaqueks/powersql) installed.
+NAEB provides a lot of boilerplate stuff that you would write manually if using only express. Also, it comes with [GenericCrud](https://github.com/isaqueks/genericCrud/) and [PowerSQL](https://github.com/isaqueks/powersql) installed.
 
 It does/includes:
 
@@ -16,7 +18,7 @@ It does/includes:
     ```js
     const PORT = 3000;
 
-    const server = new UltraX(PORT, path.join(__dirname, './routes'));
+    const server = new NAEBServer(PORT, path.join(__dirname, './routes'));
     server
         .useBodyParser()
         .useCors()
@@ -44,7 +46,7 @@ It does/includes:
         * Note: If using JavaScript, create an instance of `SimpleCrud` without generics `<T>`, as it is only allowed in TypeScript.
 
 * Route management:
-	* By specifying the route directory to UltraX constructor, all routes TypeScript files inside the directory will be used as routes.
+	* By specifying the route directory to NAEB constructor, all routes TypeScript files inside the directory will be used as routes.
     * Example route (`routes/example.ts`): 
     ```ts
     import express = require('express');
@@ -78,11 +80,11 @@ It does/includes:
         template: respondPlain
     }
     ```
-    Check: [ApiRoute reference](https://isaqueks.github.io/ultraX/interfaces/ApiRoute.html)
+    Check: [ApiRoute reference](https://isaqueks.github.io/NAEB/interfaces/ApiRoute.html)
 
 ## How to setup
 
-1. `npm install https://github.com/isaqueks/ultraX.git#release`
+1. `npm install https://github.com/isaqueks/NAEB.git#release`
 2. Add the [example](#example) code to your index file
 3. Be happy (-:
 
@@ -90,11 +92,11 @@ It does/includes:
 
 ```ts
 import path = require('path');
-import UltraX from '.';
+import NAEBServer from '.';
 
 const PORT = 3000;
 
-const server = new UltraX(PORT, path.join(__dirname, './routes'));
+const server = new NAEBServer(PORT, path.join(__dirname, './routes'));
 server
     .useBodyParser()
     .useCors()
@@ -106,4 +108,4 @@ server
 Like express, you can use middlewares (it contains proxy methods to express app basically):
 
 `server.get(req, res, next)`, `server.post(...)` and `server.use(...)`
-Check [UltraX class](https://isaqueks.github.io/ultraX/classes/default.html)
+Check [NAEB class](https://isaqueks.github.io/NAEB/classes/default.html)

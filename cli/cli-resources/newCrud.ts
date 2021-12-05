@@ -1,5 +1,5 @@
 import MyEntity from './entityPath';
-import { ObjectModel, Field, SimpleCrud, SQLiteDatabase } from 'ultrax';
+import { ObjectModel, Field, SimpleCrud, SQLiteDatabase } from 'naeb';
 
 const __NAME__Model = new ObjectModel([
     new Field('id', 'INTEGER', ['PRIMARY KEY', 'AUTOINCREMENT']),

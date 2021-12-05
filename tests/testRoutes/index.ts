@@ -1,4 +1,4 @@
-import HTTPRoute from "../../ultraXSrc/api/httpRoute";
+import HTTPRoute from "../../naebSrc/api/httpRoute";
 
 const route: HTTPRoute = {
     handler: (req, res) => 'Hello World',

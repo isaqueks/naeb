@@ -1,8 +1,8 @@
 node_modules
 build
 package-lock.json
-ultraXSrc/db/db.sqlite3
-ultraXSrc/db/sqlite.log
+naebSrc/db/db.sqlite3
+naebSrc/db/sqlite.log
 .ultraXTest
 .tsUltraXTest
 .tsnativeUltraXTest

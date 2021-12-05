@@ -1,6 +1,6 @@
 import express from 'express';
 import crypto = require('crypto');
-import asyncBodyParser, { AsyncBody } from '../ultraXSrc/middlewares/asyncBodyParser';
+import asyncBodyParser, { AsyncBody } from '../naebSrc/middlewares/asyncBodyParser';
 
 
 describe('asyncJsonBodyParser', () => {

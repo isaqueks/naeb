@@ -1,9 +1,9 @@
 import path = require('path');
-import UltraX from 'ultrax';
+import NAEBServer from 'naeb';
 
 const PORT = 3000;
 
-const server = new UltraX(PORT, path.join(__dirname, './routes'));
+const server = new NAEBServer(PORT, path.join(__dirname, './routes'));
 server
     .useBodyParser()
     .useCors()

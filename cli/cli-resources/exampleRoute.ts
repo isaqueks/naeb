@@ -9,5 +9,5 @@ function fn(req: express.Request, res: express.Response) {
 module.exports = {
     route: '/',
     method: 'get',
-    apiFn: fn,
+    handler: fn,
 } 
