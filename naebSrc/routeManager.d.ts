@@ -1,8 +1,8 @@
 import express = require('express');
-import ApiRoute from "./api/apiRoute";
+import HTTPRoute from "./api/httpRoute";
 /**
  * The routes manager class.
- * Used by default on `UltraX` to scan routes from
+ * Used by default on `NAEBServer` to scan routes from
  * the specified directory
  */
 export default class RouteManager {
@@ -13,15 +13,15 @@ export default class RouteManager {
     readonly allowedExtensions: string[];
     get paths(): string[];
     constructor(app: express.Application, ...paths: string[]);
-    add(route: ApiRoute): ApiRoute;
-    startRoute(route: ApiRoute): void;
+    add(route: HTTPRoute): HTTPRoute;
+    startRoute(route: HTTPRoute): void;
     private sanitizePath;
     protected resolveRoutePath(dirPath: string, startDir: string, filePath: string): string;
-    protected scanDir(dirPath: string, namesToIgnore?: string[], startDir?: string): void;
+    protected scanDir(dirPath: string, namesToIgnore?: string[], startDir?: string): Promise<void>;
     /**
      * Scans for routes in the specified directory
      */
-    scanRoutes(): void;
+    scanRoutes(): Promise<void>;
     /**
      * Starts all the found routes
      */

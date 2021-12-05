@@ -1,5 +1,5 @@
 import express = require('express');
-import { ApiFunctionHandler } from '../apiFunctionHandler';
+import { HTTPFunctionHandler } from '../httpFunctionHandler';
 /**
  * Will respond the request with
  * ```
@@ -11,4 +11,4 @@ import { ApiFunctionHandler } from '../apiFunctionHandler';
  * @param res The express Response
  * @param next The (optional) next
  */
-export default function respondJSX(route: ApiFunctionHandler, req: express.Request, res: express.Response, next?: ApiFunctionHandler): Promise<void>;
+export default function respondJSX(route: HTTPFunctionHandler, req: express.Request, res: express.Response, next?: HTTPFunctionHandler): Promise<void>;

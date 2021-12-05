@@ -1,4 +1,4 @@
 import express = require('express');
-export interface ApiFunctionHandler {
+export interface HTTPFunctionHandler {
     (req?: express.Request, res?: express.Response, next?: Function): any;
 }

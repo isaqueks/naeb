@@ -5,9 +5,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
 const routeManager_1 = __importDefault(require("./routeManager"));
-const asyncJsonBodyParser_1 = __importDefault(require("./middlewares/asyncJsonBodyParser"));
+const asyncBodyParser_1 = __importDefault(require("./middlewares/asyncBodyParser"));
 const fileupload = require("express-fileupload");
-class UltraX {
+class NAEBServer {
     constructor(port, routesDirs, expressApp) {
         this.port = port;
         this.expressApp = expressApp || express();
@@ -67,7 +67,7 @@ class UltraX {
      *
      * @param route The middleware scope
      * @param middleware The middleware itself
-     * @returns The current UltraX instance
+     * @returns The current NAEBServer instance
      */
     useScoped(route, middleware) {
         this.expressApp.use(route, middleware);
@@ -76,7 +76,7 @@ class UltraX {
     /**
      * Uses one or more middleware(s). For scoping, use `useScoped(route: string, middleware)`
      * @param middlewares The middleware(s) to use
-     * @returns The current UltraX instance
+     * @returns The current NAEBServer instance
      */
     use(...middlewares) {
         middlewares.forEach(middleware => this.expressApp.use(middleware));
@@ -84,7 +84,7 @@ class UltraX {
     }
     /**
      * Will use the `cors` middleware
-     * @returns The actual `UltraX` instance
+     * @returns The actual `NAEBServer` instance
      */
     useCors(origin = '*') {
         this.use((req, res, next) => {
@@ -95,7 +95,7 @@ class UltraX {
     }
     /**
      * Will use the `bodyParser` middleware
-     * @returns The actual `UltraX` instance
+     * @returns The actual `NAEBServer` instance
      */
     useBodyParser() {
         this.use(express.json());
@@ -105,15 +105,15 @@ class UltraX {
     /**
      * Add req.body() method to request
      * @param maxSize The maximum body size. Default is 32kb
-     * @returns The actual `UltraX` instance
+     * @returns The actual `NAEBServer` instance
      */
     useAsyncJsonBodyParser(maxSize = 32 * 1024) {
-        this.use((0, asyncJsonBodyParser_1.default)(maxSize));
+        this.use((0, asyncBodyParser_1.default)(maxSize));
         return this;
     }
     /**
      * Will use the `fileupload` middleware
-     * @returns The actual `UltraX` instance
+     * @returns The actual `NAEBServer` instance
      */
     useFileUpload() {
         this.use(fileupload());
@@ -123,7 +123,7 @@ class UltraX {
      * Shortcut to express.static()
      * @param scope The scope path
      * @param staticDir The directory to look for the files
-     * @returns The actual `UltraX` instance
+     * @returns The actual `NAEBServer` instance
      */
     useStatic(scope = '/', staticDir) {
         this.useScoped(scope, express.static(staticDir));
@@ -152,4 +152,4 @@ class UltraX {
         return this;
     }
 }
-exports.default = UltraX;
+exports.default = NAEBServer;

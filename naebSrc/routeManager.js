@@ -1,21 +1,30 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const apiRouteExecutor_1 = __importDefault(require("./api/apiRouteExecutor"));
+const httpRouteExecutor_1 = __importDefault(require("./api/httpRouteExecutor"));
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 /**
  * The routes manager class.
- * Used by default on `UltraX` to scan routes from
+ * Used by default on `NAEBServer` to scan routes from
  * the specified directory
  */
 class RouteManager {
     constructor(app, ...paths) {
         this.routes = [];
         this.workingRoutes = [];
-        this.allowedExtensions = ['.ts', '.js', '.jsx', '.tsx'];
+        this.allowedExtensions = ['.ts', '.tsx', '.js', '.jsx', '.mjs'];
         this.app = app;
         if (paths) {
             paths.forEach(path => {
@@ -39,9 +48,9 @@ class RouteManager {
             return;
         }
         if (!route.method) {
-            route.method = 'get';
+            route.method = 'GET';
         }
-        const executor = new apiRouteExecutor_1.default(route, this.app);
+        const executor = new httpRouteExecutor_1.default(route, this.app);
         this.workingRoutes.push(executor);
         console.log(`Starting: ${route.method.toUpperCase()}\t${route.route}`);
     }
@@ -70,50 +79,55 @@ class RouteManager {
         return normalizedRoute;
     }
     scanDir(dirPath, namesToIgnore = ['tmp'], startDir = '') {
-        if (!startDir) {
-            startDir = dirPath;
-        }
-        const files = fs_1.default.readdirSync(dirPath);
-        for (let file of files) {
-            if (namesToIgnore.includes(file)) {
-                continue;
+        return __awaiter(this, void 0, void 0, function* () {
+            if (!startDir) {
+                startDir = dirPath;
             }
-            const abs = path_1.default.join(dirPath, file);
-            if (fs_1.default.lstatSync(abs).isDirectory()) {
-                this.scanDir(abs, namesToIgnore, startDir);
-            }
-            else {
-                let extensionAllowed = false;
-                for (const ext of this.allowedExtensions) {
-                    if (file.toLowerCase().endsWith(ext)) {
-                        extensionAllowed = true;
-                        break;
-                    }
+            const files = fs_1.default.readdirSync(dirPath);
+            for (let file of files) {
+                if (namesToIgnore.includes(file)) {
+                    continue;
                 }
-                if (!extensionAllowed) {
-                    return;
-                }
-                const api = require(abs);
-                if (!api.route) {
-                    api.route = this.resolveRoutePath(dirPath, startDir, file);
-                }
-                if (!api) {
-                    console.log(`ERR: "${abs}" is not an ApiCall!`);
+                const abs = path_1.default.join(dirPath, file);
+                if (fs_1.default.lstatSync(abs).isDirectory()) {
+                    this.scanDir(abs, namesToIgnore, startDir);
                 }
                 else {
-                    this.add(api);
+                    let extensionAllowed = false;
+                    for (const ext of this.allowedExtensions) {
+                        if (file.toLowerCase().endsWith(ext)) {
+                            extensionAllowed = true;
+                            break;
+                        }
+                    }
+                    if (!extensionAllowed) {
+                        return;
+                    }
+                    const routeModule = require(abs);
+                    const api = routeModule.default || routeModule;
+                    if (!api.route) {
+                        api.route = this.resolveRoutePath(dirPath, startDir, file);
+                    }
+                    if (!api) {
+                        console.log(`ERR: "${abs}" is not an ApiCall!`);
+                    }
+                    else {
+                        this.add(api);
+                    }
                 }
             }
-        }
+        });
     }
     /**
      * Scans for routes in the specified directory
      */
     scanRoutes() {
-        if (!this._paths || this._paths.length === 0) {
-            return;
-        }
-        this._paths.forEach(path => this.scanDir(path));
+        return __awaiter(this, void 0, void 0, function* () {
+            if (!this._paths || this._paths.length === 0) {
+                return;
+            }
+            yield Promise.all(this._paths.map(path => this.scanDir(path)));
+        });
     }
     /**
      * Starts all the found routes

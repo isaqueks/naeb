@@ -1,14 +1,19 @@
-import { ApiFunctionHandler } from './apiFunctionHandler';
-import ApiTemplate from './apiTemplate';
+import { HTTPFunctionHandler } from './httpFunctionHandler';
+import HTTPRouteTemplate from './httpTemplate';
+declare type ExpressHTTPMethod = 'all' | 'get' | 'post' | 'put' | 'delete' | 'patch' | 'head' | 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD';
 /**
  * The default export each route
  * should have
  */
-export default interface ApiRoute {
+export default interface HTTPRoute {
+    /**
+     * @deprecated use `handler` instead;
+     */
+    apiFn?: HTTPFunctionHandler;
     /**
      * The route handler function
      */
-    apiFn: ApiFunctionHandler;
+    handler: HTTPFunctionHandler;
     /**
      * The route URL (Relative path will be used if not specified)
      */
@@ -16,7 +21,7 @@ export default interface ApiRoute {
     /**
      * The HTTP method
      */
-    method?: 'get' | 'post' | 'all';
+    method?: ExpressHTTPMethod;
     /**
      * Optional - The template function.
      * A template function may add extra stuff
@@ -26,5 +31,6 @@ export default interface ApiRoute {
      * respondJSON and respondPlain are templates.
      * If not specified, respondJSON would be used.
      */
-    template?: ApiTemplate;
+    template?: HTTPRouteTemplate | HTTPRouteTemplate[];
 }
+export {};

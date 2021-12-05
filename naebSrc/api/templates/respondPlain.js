@@ -10,38 +10,28 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * Will respond the request with
- * ```
- * {
- *    success: boolean,
- *    result: any,
- *    error: Error | string
- * }
- * ```
- * If no error is thrown, success is going to be `true` and result the return value.
- * Otherwise, success will be false and error the trown error
+ *
+ * Will respond the request with the (`200`) returned value or (`400`) the thrown error.
+ * No extra data is sent
  *
  * @param route The Api route handler
  * @param req The express Request
  * @param res The express Response
  * @param next The (optional) next
  */
-function respondJSON(route, req, res, next) {
+function respondPlain(route, req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const data = yield route(req, res, next);
-            res.status(200).json({
-                success: true,
-                result: data
-            });
+            res.end(data);
         }
         catch (err) {
-            const safeErr = (err || { stack: 'Unknown error', message: '' });
-            res.status(400).json({
-                success: false,
-                error: (`${safeErr.message}\n${safeErr.stack}`)
-            });
+            const safeErr = err || { stack: 'Unknown error', message: '' };
+            if (res.statusCode === 200) {
+                res.status(500);
+            }
+            res.end(`${String(safeErr.message)}\n${String(safeErr.stack)}`);
         }
     });
 }
-exports.default = respondJSON;
+exports.default = respondPlain;
