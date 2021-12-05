@@ -13,9 +13,14 @@ type ExpressHTTPMethod =
 export default interface HTTPRoute {
 
     /**
+     * @deprecated use `handler` instead;
+     */
+    apiFn?: HTTPFunctionHandler;
+
+    /**
      * The route handler function
      */
-    apiFn: HTTPFunctionHandler;
+    handler: HTTPFunctionHandler;
 
     /**
      * The route URL (Relative path will be used if not specified)

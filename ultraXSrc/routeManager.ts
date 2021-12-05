@@ -110,7 +110,10 @@ export default class RouteManager {
                     return;
                 }
                 
-                const api: HTTPRoute = await import(abs);
+                const routeModule = require(abs);
+                const api: HTTPRoute = routeModule.default || routeModule;
+                
+                
                 if (!api.route) {
                     api.route = this.resolveRoutePath(dirPath, startDir, file);
                 }

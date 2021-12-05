@@ -23,7 +23,7 @@ class HTTPRouteExecutor {
 
     private async onRequest(req, res, next) {
         
-        const handler = this.call.apiFn;
+        const handler = this.call.handler || this.call.apiFn;
         let template = this.call.template || respondJSON;
         if (!Array.isArray(template)) {
             template = [template];
@@ -34,7 +34,7 @@ class HTTPRouteExecutor {
                 next && await next();
             }
             else {
-                await template[i](handler, req, res, nextTemplate(i+1));
+                await template[i](handler, req, res, () => nextTemplate(i+1));
             }
         }
 

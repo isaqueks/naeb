@@ -10,25 +10,18 @@ describe('RouteManager class test', () => {
 
         }
     } as express.Application;
-    const routesDir = '/test/dir';
+    const routesDir = path.join(__dirname, './testRoutes');
 
     test('RouteManager#constructor', () => {
 
 
         const existsMock = jest.spyOn(fs, 'existsSync');
-        existsMock.mockImplementation(() => true);
 
         const statMock = jest.spyOn(fs, 'statSync');
-        const statMockObj = { 
-            isDirectory() { return true }
-        };
-        statMock.mockImplementation(() => (statMockObj) as any);
-        const isDirMock = jest.spyOn(statMockObj, 'isDirectory');
         
         const mgr = new RouteManager(app, routesDir);
         expect(existsMock).toHaveBeenCalledWith(routesDir);
         expect(statMock).toHaveBeenCalledWith(routesDir);
-        expect(isDirMock).toHaveBeenCalled();
 
         expect(mgr.paths).toEqual([routesDir]);
         expect(mgr['app']).toBe(app);
@@ -36,16 +29,32 @@ describe('RouteManager class test', () => {
 
     });
 
-    test('RouteManager#add', () => {
+    test('RouteManager#scanRoutes', async () => {
 
         const mgr = new RouteManager(app, routesDir);
+        await mgr.scanRoutes();
+        expect(mgr['routes']).toHaveLength(1);
+        expect(mgr['routes'][0].route).toEqual('/test_route');
+
+    });
+
+    test('RouteManager#add', async () => {
+
+        const mgr = new RouteManager(app, routesDir);
+
         const route = mgr.add({
-            apiFn: jest.fn(),
+            handler: jest.fn(),
             route: '/index.html',
+            method: 'GET'
+        });
+
+        const route2 = mgr.add({
+            handler: jest.fn(),
+            route: '/',
             method: 'get'
         });
 
-        expect(mgr['routes']).toEqual([ route ]);
+        expect(mgr['routes']).toEqual([ route, route2 ]);
 
     });
 
@@ -53,7 +62,7 @@ describe('RouteManager class test', () => {
 
         const mgr = new RouteManager(app, routesDir);
         const route = mgr.add({
-            apiFn: jest.fn(),
+            handler: jest.fn(),
             route: '/index.html',
             method: 'GET'
         });
