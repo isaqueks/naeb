@@ -1,6 +1,11 @@
 import { ApiFunctionHandler } from './apiFunctionHandler';
 import ApiTemplate from './apiTemplate';
 
+type ExpressHTTPMethod = 
+    'all' |
+    'get' | 'post' | 'put' | 'delete' | 'patch' | 'head'|
+    'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD';
+
 /**
  * The default export each route
  * should have
@@ -19,7 +24,7 @@ export default interface ApiRoute {
     /**
      * The HTTP method
      */
-    method?: 'get' | 'post' | 'all';
+    method?: ExpressHTTPMethod;
 
     /**
      * Optional - The template function.

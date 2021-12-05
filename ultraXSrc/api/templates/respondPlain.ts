@@ -18,10 +18,13 @@ export default async function respondPlain(
     next?: ApiFunctionHandler) {
     try {
         const data = await route(req, res, next);
-        res.status(200).end(data);
+        res.end(data);
     }
     catch (err) {
         const safeErr = err || { stack: 'Unknown error', message: '' };
-        res.status(400).end(`${String(safeErr.message)}\n${String(safeErr.stack)}`);
+        if (res.statusCode === 200) {
+            res.status(500);
+        }
+        res.end(`${String(safeErr.message)}\n${String(safeErr.stack)}`);
     }
 }

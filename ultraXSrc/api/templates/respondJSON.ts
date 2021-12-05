@@ -25,14 +25,17 @@ export default async function respondJSON(
     next?: ApiFunctionHandler) {
     try {
         const data = await route(req, res, next);
-        res.status(200).json({
+        res.json({
             success: true,
             result: data
         });
     }
     catch (err) {
         const safeErr = (err || { stack: 'Unknown error', message: '' }) as Error;
-        res.status(400).json({
+        if (res.statusCode === 200) {
+            res.status(500);
+        }
+        res.json({
             success: false,
             error: (`${safeErr.message}\n${safeErr.stack}`)
         });

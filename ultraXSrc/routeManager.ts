@@ -46,7 +46,7 @@ export default class RouteManager {
             return;
         }
         if (!route.method) {
-            route.method = 'get';
+            route.method = 'GET';
         }
         const executor = new ApiRouteExecutor(route, this.app);
         this.workingRoutes.push(executor);

@@ -55,7 +55,7 @@ describe('RouteManager class test', () => {
         const route = mgr.add({
             apiFn: jest.fn(),
             route: '/index.html',
-            method: 'get'
+            method: 'GET'
         });
 
         mgr.startRoute(route);
