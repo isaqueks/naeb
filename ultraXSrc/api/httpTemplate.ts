@@ -1,15 +1,15 @@
 import express from "express";
-import { ApiFunctionHandler } from "./apiFunctionHandler";
+import { HTTPFunctionHandler } from "./httpFunctionHandler";
 
 /**
  * The API template function.
  * It may add extra data to the response
  */
-export default interface ApiTemplate {
+export default interface HTTPRouteTemplate {
     (
-        route: ApiFunctionHandler, 
+        route: HTTPFunctionHandler, 
         req?: express.Request, 
         res?: express.Response, 
-        next?: ApiFunctionHandler
+        next?: HTTPFunctionHandler
     ): any;
 }

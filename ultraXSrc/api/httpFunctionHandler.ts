@@ -1,6 +1,6 @@
 import express = require('express');
-import ApiTemplate from './apiTemplate';
+import HTTPRouteTemplate from './httpTemplate';
 
-export interface ApiFunctionHandler {
+export interface HTTPFunctionHandler {
     (req?: express.Request, res?: express.Response, next?: Function): any;
 }

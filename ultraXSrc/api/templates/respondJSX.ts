@@ -1,5 +1,5 @@
 import express = require('express');
-import { ApiFunctionHandler } from '../apiFunctionHandler';
+import { HTTPFunctionHandler } from '../httpFunctionHandler';
 import ReactDOMServer from 'react-dom/server';
 
 /**
@@ -14,10 +14,10 @@ import ReactDOMServer from 'react-dom/server';
  * @param next The (optional) next
  */
 export default async function respondJSX(
-    route: ApiFunctionHandler,
+    route: HTTPFunctionHandler,
     req: express.Request,
     res: express.Response,
-    next?: ApiFunctionHandler) {
+    next?: HTTPFunctionHandler) {
     try {
         const jsx = await route(req, res, next);
         const rendered = ReactDOMServer.renderToNodeStream(jsx);

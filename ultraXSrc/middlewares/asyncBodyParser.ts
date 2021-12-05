@@ -1,4 +1,4 @@
-import { ApiFunctionHandler } from '../api/apiFunctionHandler';
+import { HTTPFunctionHandler } from '../api/httpFunctionHandler';
 
 export type BodyValidator = (body?: any) => boolean;
 export type AsyncBody = (validate?: BodyValidator) => Promise<any>;
@@ -29,7 +29,7 @@ export function setBodyParser(contentType: string, parser: (payload) => any) {
     bodyParsers[contentType.toLowerCase()] = parser;
 }
 
-export default function asyncBodyParser(maxSize: number): ApiFunctionHandler {
+export default function asyncBodyParser(maxSize: number): HTTPFunctionHandler {
     return ((req, res, next) => {
     
         const data = [];
@@ -77,6 +77,6 @@ export default function asyncBodyParser(maxSize: number): ApiFunctionHandler {
 
         next();
     
-    }) as ApiFunctionHandler;
+    }) as HTTPFunctionHandler;
     
 }

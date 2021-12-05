@@ -1,5 +1,5 @@
 import express = require('express');
-import { ApiFunctionHandler } from '../apiFunctionHandler';
+import { HTTPFunctionHandler } from '../httpFunctionHandler';
 
 /**
  * 
@@ -12,10 +12,10 @@ import { ApiFunctionHandler } from '../apiFunctionHandler';
  * @param next The (optional) next
  */
 export default async function respondPlain(
-    route: ApiFunctionHandler,
+    route: HTTPFunctionHandler,
     req: express.Request,
     res: express.Response,
-    next?: ApiFunctionHandler) {
+    next?: HTTPFunctionHandler) {
     try {
         const data = await route(req, res, next);
         res.end(data);

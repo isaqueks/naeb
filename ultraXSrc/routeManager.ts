@@ -1,6 +1,6 @@
 import express = require('express');
-import ApiRoute from "./api/apiRoute";
-import ApiRouteExecutor from "./api/apiRouteExecutor";
+import HTTPRoute from "./api/httpRoute";
+import HTTPRouteExecutor from "./api/httpRouteExecutor";
 import fs from 'fs';
 import path from 'path';
 
@@ -12,12 +12,12 @@ import path from 'path';
 export default class RouteManager {
 
     private app: express.Application;
-    private routes: ApiRoute[] = [];
-    private workingRoutes: ApiRouteExecutor[] = []; 
+    private routes: HTTPRoute[] = [];
+    private workingRoutes: HTTPRouteExecutor[] = []; 
 
     private _paths: string[];
 
-    public readonly allowedExtensions = ['.ts', '.js', '.jsx', '.tsx'];
+    public readonly allowedExtensions = ['.ts', '.tsx', '.js', '.jsx', '.mjs'];
 
     public get paths(): string[] {
         return this._paths;
@@ -35,12 +35,12 @@ export default class RouteManager {
         }
     }
 
-    public add(route: ApiRoute): ApiRoute {
+    public add(route: HTTPRoute): HTTPRoute {
         this.routes.push(route);
         return route;
     }
 
-    public startRoute(route: ApiRoute) {
+    public startRoute(route: HTTPRoute) {
         if (this.workingRoutes.find(arrRoute => arrRoute.call === route)) {
             // Route already started
             return;
@@ -48,7 +48,7 @@ export default class RouteManager {
         if (!route.method) {
             route.method = 'GET';
         }
-        const executor = new ApiRouteExecutor(route, this.app);
+        const executor = new HTTPRouteExecutor(route, this.app);
         this.workingRoutes.push(executor);
         console.log(`Starting: ${route.method.toUpperCase()}\t${route.route}`);
     }
@@ -110,7 +110,7 @@ export default class RouteManager {
                     return;
                 }
                 
-                const api: ApiRoute = await import(abs);
+                const api: HTTPRoute = await import(abs);
                 if (!api.route) {
                     api.route = this.resolveRoutePath(dirPath, startDir, file);
                 }

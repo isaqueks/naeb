@@ -1,5 +1,5 @@
-import { ApiFunctionHandler } from './apiFunctionHandler';
-import ApiTemplate from './apiTemplate';
+import { HTTPFunctionHandler } from './httpFunctionHandler';
+import HTTPRouteTemplate from './httpTemplate';
 
 type ExpressHTTPMethod = 
     'all' |
@@ -10,12 +10,12 @@ type ExpressHTTPMethod =
  * The default export each route
  * should have
  */
-export default interface ApiRoute {
+export default interface HTTPRoute {
 
     /**
      * The route handler function
      */
-    apiFn: ApiFunctionHandler;
+    apiFn: HTTPFunctionHandler;
 
     /**
      * The route URL (Relative path will be used if not specified)
@@ -35,5 +35,5 @@ export default interface ApiRoute {
      * respondJSON and respondPlain are templates.
      * If not specified, respondJSON would be used.
      */
-    template?: ApiTemplate;
+    template?: HTTPRouteTemplate | HTTPRouteTemplate[];
 }

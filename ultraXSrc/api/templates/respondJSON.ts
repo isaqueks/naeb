@@ -1,5 +1,5 @@
 import express = require('express');
-import { ApiFunctionHandler } from '../apiFunctionHandler';
+import { HTTPFunctionHandler } from '../httpFunctionHandler';
 
 /**
  * Will respond the request with 
@@ -19,10 +19,10 @@ import { ApiFunctionHandler } from '../apiFunctionHandler';
  * @param next The (optional) next
  */
 export default async function respondJSON(
-    route: ApiFunctionHandler,
+    route: HTTPFunctionHandler,
     req: express.Request,
     res: express.Response,
-    next?: ApiFunctionHandler) {
+    next?: HTTPFunctionHandler) {
     try {
         const data = await route(req, res, next);
         res.json({
