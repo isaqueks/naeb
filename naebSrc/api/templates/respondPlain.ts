@@ -25,6 +25,9 @@ export default async function respondPlain(
         if (res.statusCode === 200) {
             res.status(500);
         }
-        res.end(`${String(safeErr.message)}\n${String(safeErr.stack)}`);
+        if (process.env.NODE_ENV !== 'production') {
+            return res.end(`${String(safeErr.message)}\n${String(safeErr.stack)}`);
+        }
+        res.end(`${String(safeErr.message)}`);
     }
 }

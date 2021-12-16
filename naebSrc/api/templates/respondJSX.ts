@@ -25,13 +25,19 @@ export default async function respondJSX(
         rendered.pipe(res)
     }
     catch (err) {
-        const safeErr = (err || { stack: 'Unknown error', message: '' }) as Error;
+        const safeErr = (err || { stack: 'Unknown error', message: 'Unknown error' }) as Error;
         if (res.statusCode === 200) {
             res.status(500);
         }
+        if (process.env.NODE_ENV !== 'production') {
+            return res.json({
+                success: false,
+                error: (`${String(safeErr.message)}\n${String(safeErr.stack)}`)
+            });
+        }
         res.json({
             success: false,
-            error: (`${String(safeErr.message)}\n${String(safeErr.stack)}`)
+            error: (`${String(safeErr.message)}`)
         });
     }
 }
