@@ -40,9 +40,15 @@ function respondJSON(route, req, res, next) {
             if (res.statusCode === 200) {
                 res.status(500);
             }
+            if (process.env.NODE_ENV !== 'production') {
+                return res.json({
+                    success: false,
+                    error: (`${String(safeErr.message)}\n${String(safeErr.stack)}`)
+                });
+            }
             res.json({
                 success: false,
-                error: (`${safeErr.message}\n${safeErr.stack}`)
+                error: (`${String(safeErr.message)}`)
             });
         }
     });

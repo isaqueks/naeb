@@ -11,4 +11,4 @@ import { HTTPFunctionHandler } from '../httpFunctionHandler';
  * @param res The express Response
  * @param next The (optional) next
  */
-export default function respondJSX(route: HTTPFunctionHandler, req: express.Request, res: express.Response, next?: HTTPFunctionHandler): Promise<void>;
+export default function respondJSX(route: HTTPFunctionHandler, req: express.Request, res: express.Response, next?: HTTPFunctionHandler): Promise<express.Response<any, Record<string, any>>>;

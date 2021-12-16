@@ -33,13 +33,19 @@ function respondJSX(route, req, res, next) {
             rendered.pipe(res);
         }
         catch (err) {
-            const safeErr = (err || { stack: 'Unknown error', message: '' });
+            const safeErr = (err || { stack: 'Unknown error', message: 'Unknown error' });
             if (res.statusCode === 200) {
                 res.status(500);
             }
+            if (process.env.NODE_ENV !== 'production') {
+                return res.json({
+                    success: false,
+                    error: (`${String(safeErr.message)}\n${String(safeErr.stack)}`)
+                });
+            }
             res.json({
                 success: false,
-                error: (`${String(safeErr.message)}\n${String(safeErr.stack)}`)
+                error: (`${String(safeErr.message)}`)
             });
         }
     });
